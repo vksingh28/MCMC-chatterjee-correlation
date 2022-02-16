@@ -14,7 +14,7 @@ for(t in 2:reps) {
 }
 xicor(head(ar.x, reps-1), ar.y)
 xicor(ar.y, head(ar.x, reps-1))
-# Comments: Either xi is not symmetric, or there is some condition that is missing in the exp example
+# Comments: xicor is symmetric. I believe the reason why its not coming out to be same is low value of rho and probably the use of correlated samples (not iid) to calculate xicor.
 
 # MH
 normals = rnorm(reps)
