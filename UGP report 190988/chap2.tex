@@ -1,0 +1,84 @@
+\chapter{Some new results related to the Chatterjee correlation and Markov chains}
+
+\begin{theorem}
+    Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distribution $\pi$. We claim that 
+    \begin{enumerate}
+        \item $Cov(X_k, X_{k+t})$ is independent of $k$.
+            \begin{proof}
+                We know that
+                $$Cov(X_k, X_{k+t}) = \mathbb{E}[X_k X_{k+t}] - \mathbb{E}[X_k]\mathbb{E}[X_{k+t}]$$
+                Also, as $X_n$ is a stationary markov chain, $\mathbb{E}[X_n] = \mu$, where $\mu$ is the mean of the distribution $\pi$. 
+                And, 
+                $$\mathbb{E}[X_k X_{k+t}] = \int\int xyf_{(X_k, X_{k+t})}(x, y)dxdy$$
+                where $f_{(X_k, X_{k+t})}$ is the joint density of $X_k$ and $X_{k+t}$. Now as the markov chain is stationary, this density is dependent only on $t$, i.e. $$f_{(X_k, X_{k+t})} = f_{(X_1, X_{1+t})}$$
+                As both the terms of $Cov(X_k, X_{k+t})$ are independent of $k$, $Cov(X_k, X_{k+t})$ is independent of $k$.\\
+            \end{proof}
+            
+        \item $\xi(X_k, X_{k+t})$ is independent of $k$.
+        \begin{proof}
+            \begin{equation}
+                \xi_{(X_k, X_{k+t})} = \frac{\int Var(\mathbb{E}[1_{\{X_{k+u} \geq t\}}|X_k=x]) d\pi(t)}{\int Var(1_{\{X_{k+u} \geq t\}}) d\pi(t)}
+            \end{equation}
+            We'll prove that both the numerator and the denominator are independent of $k$. \\
+            We can write 
+            \begin{align}
+                \mathbb{E}[1_{\{X_{k+u} \geq t\}}|X_k=x] &= Pr(X_{k+u} \geq t|X_k=x) \\
+                &= Pr(X_{k+u} \in [t, \infty) | X_k = x)
+            \end{align}
+            and by time-homogeneity of our Markov chain
+            \begin{align}
+                Pr(X_{k+u} \in [t, \infty) | X_k = x) &= \int_t^{\infty} P^u(x, dy)
+            \end{align}
+            which is independent of $k$. And hence,
+            \begin{equation}
+                \int Var\left(\int_t^{\infty} P^u(x, dy)\right) d\pi(u) 
+            \end{equation}
+            is also independent of $k$.\\\\
+            Now for the denominator, we know by stationarity of our Markov chain that $X_n \sim \pi$, so for any function $f, f(X_n) \sim \pi'$, and therefore the variance will be same for all $n$.\\ 
+            Let $f_t: \mathbb{R} \rightarrow \mathbb{R}$ such that $f_t(X) = 1_{\{X \geq t\}}$.\\
+            We can write the denominator as 
+            $$\int Var(f_t(X_{k+u})) d\mu(t)$$
+            where,
+            $$Var(f_t(X_{k+u})) = Var(f_t(X_{1}))$$
+            Therefore, 
+            $$\int Var(f_t(X_{k+u})) d\mu(t)$$
+            is independent of both $k$ and $u$.\\\\
+            As both the numerator and denominator are independent of k, we can conclude that $\xi(X_k, X_{k+u})$ is independent of $k$.
+        \end{proof}
+        
+        \item $\xi(X_k, X_{k+t}) = \xi(X_{k+t}, X_k)$ for time reversal Markov chains. 
+        \begin{proof}
+            From (2), we know that the denominator of $\xi(X_k, X_{k+t})$ is independent of both $k$ and $t$. So we only have to prove that the numerator is symmetric. \\
+            Now for a time reversal Markov chain, we know that \\
+            $\textit{\textbf{(Not sure if this is correct, need to prove/confirm)}}$
+            $$Pr(X_{n+k} \in A | X_n = x) = Pr(X_n \in A | X_{n+k} = x)$$
+            So, by (2.4) we have,
+            \begin{align*}
+                Pr(X_k \in [t, \infty) | X_{k+u} = x) &= Pr(X_{k+u} \in [t, \infty) | X_k = x) \\
+                &= \int_t^{\infty} P^u(x, dy)
+            \end{align*}
+            Hence the numerator in both the cases will be equal to (2.5). \\
+            As both the numerator and denominator are symmetric, we are done.
+        \end{proof}
+        
+        \item $\lim_{t \rightarrow \infty} \xi(X_1, X_{t+1}) = 0$ for an Ergodic Markov chain
+        \begin{proof}
+            We have
+            \begin{equation*}
+                \xi(X_1, X_{t+1}) = \frac{\int Var(\mathbb{E}[1_{\{X_{t+1} \geq u\}}|X_1=x]) d\pi(u)}{\int Var(1_{\{X_{t+1} \geq u\}}) d\pi(u)}
+            \end{equation*}
+            The denominator is independent of $t$ as proven in (2), so we only need to show that the numerator goes to 0 as $t \rightarrow \infty$.\\
+            \begin{lemma}
+                
+            \end{lemma}
+            Now, by (2.4), we know that
+            \begin{equation*}
+                \mathbb{E}[1_{\{X_{t+1} \geq u\}}|X_1=x] = \int_u^{\infty} P^{t}(x, dy)
+            \end{equation*}
+            For an Ergodic Markov chain, under the Total Variation Norm, we know that 
+            \begin{equation*}
+                ||P^t(x, \cdot) - F(\cdot)|| \rightarrow 0 \text{ as } t \rightarrow \infty
+            \end{equation*}
+        \end{proof}
+    \end{enumerate}
+\end{theorem}
