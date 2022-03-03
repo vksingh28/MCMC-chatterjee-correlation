@@ -1,0 +1,71 @@
+\chapter{Proof of symmetricity in a special case}
+
+% \begin{theorem}
+% 	Let $X, Y$ be continuous random variables from $\pi$, then
+% 	$$\xi(X, Y) = \xi(Y, X)$$
+
+% 	\begin{proof}
+% 		We are only interested in the numerator of $\xi$ as the denominator only depends on $\pi$ as shown in Theorem 2.1.2.\\
+% 		We want to show that
+% 		\begin{equation}
+% 			\int Var(Pr(Y \geq t | X))d\pi(t) = \int Var(Pr(X \geq t | Y))d\pi(t)
+% 		\end{equation}
+% 		Now,
+% 		\begin{align*}
+% 			Pr(Y \geq t | X = x) &= \int_t^{\infty} f_{Y|X=x}(y)dy\\
+% 			&= \frac{1}{f_X(x)}\int_t^{\infty} f_{X, Y}(x, y)dy
+% 		\end{align*}
+% 		and,
+% 		\begin{align*}
+% 			Pr(X \geq t | Y = y) &= \int_t^{\infty} f_{X|Y=y}(x)dx\\
+% 			&= \frac{1}{f_Y(y)}\int_t^{\infty} f_{X, Y}(x, y)dx\\
+% 			&= \frac{1}{f_X(y)}\int_t^{\infty} f_{X, Y}(x, y)dx\\
+% 		\end{align*}
+
+
+% 		\begin{lemma}
+% 			If $X, Y \sim F$, then
+% 			$$f_{X, Y}(x, y) = f_{Y, X}(y, x)$$
+% 			\begin{proof}
+
+% 			\end{proof}
+% 		\end{lemma}
+% 	\end{proof}
+% \end{theorem}
+\begin{theorem}
+	Let $X_1, \dots, X_n$ be a time reversible Markov chain, then
+	$$\xi(X_n, X_{n+1}) = \xi(X_{n+1}, X_n)$$
+
+	\begin{proof}
+		As the Markov chain is time reversible, by Chapter 1, Section 5 of the Handbook of MCMC,
+		the distribution of $(X_i, X_{i+1}, \dots X_j)$ is same as $(X_j, X_{j-1}, \dots X_i)$. In particular,
+		distribution of $(X_n, X_{n+1})$ is same as $(X_{n+1}, X_n)$.
+		This means that for any $(x, y) \in \mathbb{R}^2$, we have
+		\begin{equation*}
+			f_{(X_n, X_{n+1})}(x, y) = f_{(X_{n+1}, X_n)}(x, y)
+		\end{equation*}
+		We are only interested in the numerator of $\xi$ as the denominator only depends on $\pi$ as shown in Theorem 2.1.2.\\
+		We want to show that,
+		\begin{equation*}
+			\int (Var(Pr(X_{n+1} \geq t | X_n)) - Var(Pr(X_n \geq t | X_{n+1})) )d\pi(t) = 0
+		\end{equation*}
+		% Now, we know that
+		% \begin{equation}
+		% 	Var(X) = E[X^2] - E[X]^2
+		% \end{equation}
+		% We claim that $E[Pr(X_{n+1} \geq t | X_n)]$ depends only on the stationary distribution $\pi$
+		% Prove the claim
+		We claim that
+		\begin{equation*}
+			Var(Pr(X_{n+1} \geq t | X_n)) - Var(Pr(X_n \geq t | X_{n+1}) = 0
+		\end{equation*}
+		\begin{proof}
+			$$Var(Pr(X_{n+1} \geq t | X_n)) - Var(Pr(X_n \geq t | X_{n+1})$$
+			$$= Var(\int_t^{\infty} f_{(X_{n+1}|X_n=x)}(y)dy) - Var(\int_t^{\infty} f_{(X_{n}|X_{n+1}=x)}(y)dy)$$
+			$$= Var(\frac{1}{f_{X_n}(x)} \int_t^{\infty} f_{(X_n, X_{n+1})}(x, y)dy) - Var(\frac{1}{f_{X_{n+1}}(x)} \int_t^{\infty} f_{(X_{n+1}, X_n)}(x, y)dy)$$
+			$$= Var(\frac{1}{f_{X_n}(x)} \int_t^{\infty} f_{(X_n, X_{n+1})}(x, y)dy) - Var(\frac{1}{f_{X_{n}}(x)} \int_t^{\infty} f_{(X_{n}, X_{n+1})}(x, y)dy)$$
+			$$= 0$$
+		\end{proof}
+		Using this claim, we get the desired result.
+	\end{proof}
+\end{theorem}

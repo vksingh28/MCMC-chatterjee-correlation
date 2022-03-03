@@ -1,4 +1,5 @@
 library(XICOR)
+library(qbld)
 
 reps = 1e5
 k = 1e3
@@ -72,3 +73,16 @@ calculateXI(head(bvn, reps-k), tail(bvn, reps-k))
 calculateXI(tail(bvn, reps-k), head(bvn, reps-k))
 
 # Time irreversible markov chain
+
+
+# non stationary example to test symmetricity
+n = 1e6
+x1 = rnorm(n)
+x2 = rnorm (n)
+x3 = rnorm(n)
+y = x1*x2 + sin(x1*x3)
+calculateXI(x1, y)
+calculateXI(y, x1)
+# Not symmetric
+
+?model.qbld

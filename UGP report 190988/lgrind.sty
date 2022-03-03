@@ -5,14 +5,14 @@
 %% The original source files were:
 %%
 %% lgrind.dtx  (with options: `package')
-%% 
+%%
 %% LGrind is used to format source code of different programming
 %% languages for LaTeX.
-%% 
+%%
 %% LGrind is a minor adaptation of Jerry Leichter's tgrind for LaTeX,
 %% which was a notable improvement upon Van Jacobsen's tgrind for
 %% plain TeX, which was adapted from vgrind, a troff prettyprinter.
-%% 
+%%
 %% Based on Van Jacobson's ``tgrindmac'', a macro package for TeX.
 %% Modified, 1987 by Jerry Leichter. Put '@' in all internal names.
 %% Modified, 1991 by George Reilly. Changed name from tgrind to lgrind.
@@ -101,17 +101,17 @@
 	\expandafter\genFkl\i
 }
 
-% Vectors
-\renewcommand{\vec}[1]{{\mathbf{#1}}}
-\newcommand{\genLatinVec}[1]{\expandafter\newcommand\csname v#1\endcsname{{\vec #1}}}
-\@for\i:=\LatinLower\do{%
-	\expandafter\genLatinVec\i
-}
+% % Vectors
+% \renewcommand{\vec}[1]{{\mathbf{#1}}}
+% \newcommand{\genLatinVec}[1]{\expandafter\newcommand\csname v#1\endcsname{{\vec #1}}}
+% \@for\i:=\LatinLower\do{%
+% 	\expandafter\genLatinVec\i
+% }
 
-\newcommand{\genLatinVecU}[1]{\expandafter\newcommand\csname v#1\endcsname{{\vec #1}}}
-\@for\i:=\LatinUpper\do{%
-	\expandafter\genLatinVecU\i
-}
+% \newcommand{\genLatinVecU}[1]{\expandafter\newcommand\csname v#1\endcsname{{\vec #1}}}
+% \@for\i:=\LatinUpper\do{%
+% 	\expandafter\genLatinVecU\i
+% }
 
 % Greek symbol vectors
 \def\mydefgreek#1{\expandafter\def\csname v#1\endcsname{\text{\boldmath$\mathbf{\csname #1\endcsname}$}}}
