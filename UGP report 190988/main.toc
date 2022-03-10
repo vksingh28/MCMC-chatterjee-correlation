@@ -4,5 +4,4 @@
 \contentsline {subsection}{\numberline {1.2.1}Questions relevant to our purpose and some TODOs}{4}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}Some remarks till now}{4}{subsection.1.2.2}%
 \contentsline {chapter}{\numberline {2}Some new results related to the Chatterjee correlation and Markov chains}{6}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Proof of symmetricity in a special case}{9}{chapter.3}%
-\contentsline {chapter}{\numberline {4}TODOs and Questions to ask in the meeting}{11}{chapter.4}%
+\contentsline {chapter}{\numberline {3}TODOs and Questions to ask in the meeting}{11}{chapter.3}%
