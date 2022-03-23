@@ -61,7 +61,7 @@ Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distri
                 f_{(X_{n}, X_{n+k})}(x, y) = f_{(X_{n+k}, X_{n})}(x, y) \text{  } \forall (x, y) \in \mathbb{R}^2
             \end{equation*}
             \begin{proof}
-                Will write it later.
+                Will prove it later
             \end{proof}
         \end{lem}
         By this lemma, it is clear that
@@ -84,7 +84,16 @@ Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distri
         \begin{lem}
             $$\lim_{n \rightarrow \infty} \int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t) = \int \lim_{n \rightarrow \infty}\Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t)$$
             \begin{proof}
-                Prove it later
+                Define $f_n(t) := \Var{\Pr(X_{n} \geq t | X_{1} = x)} \cdot \pi(t) $ \\
+                Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
+                Now, as $f_n$ is a product of two bounded functions, it is also bounded.
+                Set
+                $$ C:= sup_{n \in \mathbb{N}} (sup_{t \in \mathbb{R}}f_n(t))$$
+                then
+                $$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} C\pi(t)dt = C < \infty$$
+                As $f_n$ is dominated by $g$ (where $g(t) := C\cdot\pi(t) \forall t \in \mathbb{R})$, \\
+                By Lebesgue's Dominated Convergence Theorem,
+                $$lim_{n \rightarrow \infty} \int f_n(t) dt = \int (lim_{n \rightarrow \infty} f_n(t)) dt$$
             \end{proof}
         \end{lem}
         \begin{lem}
