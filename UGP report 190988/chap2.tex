@@ -61,7 +61,31 @@ Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distri
                 f_{(X_{n}, X_{n+k})}(x, y) = f_{(X_{n+k}, X_{n})}(x, y) \text{  } \forall (x, y) \in \mathbb{R}^2
             \end{equation*}
             \begin{proof}
-                Will prove it later
+                It is enough to show that for any two $A, B \in \mathcal{B}(\mathbb{R})$
+                \begin{align*}
+                    \Pr(X_n \in A \& X_{n+k} \in B) = \Pr(X_{n+k} \in A \& X_{n} \in B)
+                \end{align*}
+                which is same as
+                \begin{align*}
+                    \int_A \pi(dx) P^k(x, B) = \int_B \pi(dy) P^k(y, A) \\
+                    \int_A \int_B \pi(dx) P^k(x, dy) = \int_B \int_A \pi(dy) P^k(y, dx)
+                \end{align*}
+                To prove the above statement, it is enough to show that for any $x \in A$ and $y \in B$
+                $$\pi(dx) P^k(x, dy) = \pi(dy) P^k(y, dx)$$
+                We proceed by induction on $k$.
+                For $k = 1$, it is true by definition of reversibility of Markov chains.\\
+                Assume that it is true for all $1 \leq m < k$.
+                We want to prove it for $k$.\\
+                \begin{align*}
+                    \pi(dx) P^k(x, dy) &= \pi(dx) \int_{\mathcal{X}} P^m(x, dz)\cdot P^{k-m}(z, dy)\\
+                    &= \int_{\mathcal{X}} \pi(dx) P^m(x, dz) P^{k-m}(z, dy) \\
+                    &= \int_{\mathcal{X}} \pi(dz) P^m(z, dx) P^{k-m}(z, dy) \\
+                    &= \int_{\mathcal{X}} P^m(z, dx) \pi(dz) P^{k-m}(z, dy) \\
+                    &= \int_{\mathcal{X}} P^m(z, dx) \pi(dy) P^{k-m}(y, dz) \\
+                    &= \pi(dy) \int_{\mathcal{X}}  P^{k-m}(y, dz) P^m(z, dx) \\
+                    &= \pi(dy) \cdot P^k(y, dx)
+                \end{align*}
+
             \end{proof}
         \end{lem}
         By this lemma, it is clear that
