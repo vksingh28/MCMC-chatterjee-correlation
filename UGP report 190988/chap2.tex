@@ -88,7 +88,7 @@ Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distri
                 Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
                 Now, as $f_n$ is a product of two bounded functions, it is also bounded.
                 Set
-                $$ C:= sup_{n \in \mathbb{N}} (sup_{t \in \mathbb{R}}f_n(t))$$
+                $$ C:= sup_{n \in \mathbb{N}} (sup_{t \in \mathbb{R}} (\Var{\Pr(X_{n} \geq t | X_{1} = x)}))$$
                 then
                 $$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} C\pi(t)dt = C < \infty$$
                 As $f_n$ is dominated by $g$ (where $g(t) := C\cdot\pi(t) \forall t \in \mathbb{R})$, \\
@@ -99,7 +99,41 @@ Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distri
         \begin{lem}
             $$\lim_{n \rightarrow \infty} \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} = \Var{\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]}$$
             \begin{proof}
-                Prove it later
+                We can write
+                \begin{align*}
+                    \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \mathbb{E}[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]^2] - \mathbb{E}[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]]^2 \\
+                    &= \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2] - \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2
+                \end{align*}
+                Assuming that both $\lim_n \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]$ and  $\lim_n \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2$ exist,
+                \begin{align*}
+                    \lim_{n \rightarrow \infty} \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+                    &- \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2\\
+                    &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+                    &- (\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)])^2\\
+                \end{align*}
+                For any $n \in \mathbb{N}$, we can write
+                $$\mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^n] = \int_{-\infty}^{\infty} \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt$$
+                \begin{lem}
+                    $$\lim_{n \rightarrow \infty} \int \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t) dt = \int \lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt$$
+                    \begin{proof}
+                        Define $f_n(t) := \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t) $ \\
+                        Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
+                        Now, as $f_n$ is a product of two bounded functions, it is also bounded.
+                        Now,
+                        $$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} \pi(t)dt = 1 < \infty$$
+                        As $f_n$ is dominated by $\pi$, \\
+                        By Lebesgue's Dominated Convergence Theorem,
+                        $$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int (lim_{n \rightarrow \infty} f_n(t)) dt$$
+                    \end{proof}
+                \end{lem}
+                Using the above Lemma for $n = 1$ and $2$, we can take limit in both the terms inside, i.e.
+                \begin{align*}
+                    \lim_{n \rightarrow \infty} \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+                    &- (\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)])^2\\
+                    &= \mathbb{E}[\lim_{n \rightarrow \infty} \Pr(X_{n} \geq t | X_{1} = x)^2]\\
+                    &- (\mathbb{E}[\lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)])^2\\
+                    &= \Var{\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]}
+                \end{align*}
             \end{proof}
         \end{lem}
         Now, by (2.4), we know that
