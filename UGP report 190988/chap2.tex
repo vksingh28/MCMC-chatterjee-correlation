@@ -2,20 +2,23 @@
 
 Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distribution $\pi$.
 \begin{theorem}
-    $Cov(X_k, X_{k+t})$ is independent of $k$.
+    Here we present a proof of a well known result about the Pearson Correlation Coefficient.
+    $$\Cov(X_k, X_{k+t}) \text{ is independent of } k.$$
     \begin{proof}
         We know that
-        $$Cov(X_k, X_{k+t}) = \mathbb{E}[X_k X_{k+t}] - \mathbb{E}[X_k]\mathbb{E}[X_{k+t}]$$
-        Also, as $X_n$ is a stationary markov chain, $\mathbb{E}[X_n] = \mu$, where $\mu$ is the mean of the distribution $\pi$.
+        $$\Cov(X_k, X_{k+t}) = \mathbb{E}[X_k X_{k+t}] - \mathbb{E}[X_k]\mathbb{E}[X_{k+t}].$$
+        Also, as $X_n$ is a stationary markov chain, $\mathbb{E}[X_n] = \mu$, where $\mu$ is the mean of the distribution $\pi$.\\
         And,
         $$\mathbb{E}[X_k X_{k+t}] = \int\int xyf_{(X_k, X_{k+t})}(x, y)dxdy$$
-        where $f_{(X_k, X_{k+t})}$ is the joint density of $X_k$ and $X_{k+t}$. Now as the markov chain is stationary, this density is dependent only on $t$, i.e. $$f_{(X_k, X_{k+t})} = f_{(X_1, X_{1+t})}$$
-        As both the terms of $Cov(X_k, X_{k+t})$ are independent of $k$, $Cov(X_k, X_{k+t})$ is independent of $k$.\\
+        where $f_{(X_k, X_{k+t})}$ is the joint density of $X_k$ and $X_{k+t}$. Now as the markov chain is stationary, this density is dependent only on $t$, i.e. $$f_{(X_k, X_{k+t})} = f_{(X_1, X_{1+t})}.$$
+        As both the terms of $\Cov(X_k, X_{k+t})$ are independent of $k$, $\Cov(X_k, X_{k+t})$ is independent of $k$.\\
     \end{proof}
 \end{theorem}
 
+Now we'll prove three new results analogous to the Pearson autocorrelation function for Chatterjee's correlation Coefficient.
+
 \begin{theorem}
-    $\xi(X_n, X_{n+k})$ is independent of $n$.
+    $\xi(X_n, X_{n+k})$ is independent of $n$, where $n$ and $k$ are in $\mathbb{N}$.
     \begin{proof}
         \begin{equation}
             \xi_{(X_n, X_{n+k})} = \frac{\int \Var{\mathbb{E}[1_{\{X_{n+k} \geq t\}}|X_n=x]} d\pi(t)}{\int \Var{1_{\{X_{n+k} \geq t\}}} d\pi(t)}
@@ -39,7 +42,7 @@ Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distri
         We can write the denominator as
         $$\int \Var{f_t(X_{n+k})} d\pi(t)$$
         where,
-        $$\Var{f_t(X_{n+k})} = \Var{f_t(X_{1})}$$
+        $$\Var{f_t(X_{n+k})} = \Var{f_t(X_{1})}.$$
         Therefore,
         $$\int \Var{f_t(X_{n+k})} d\pi(t)$$
         is independent of both $n$ and $k$.\\\\
@@ -48,76 +51,81 @@ Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distri
 \end{theorem}
 
 \begin{theorem}
-    $\xi(X_n, X_{n+k}) = \xi(X_{n+k}, X_n)$ for time reversal Markov chains.
+    $\xi(X_n, X_{n+k}) = \xi(X_{n+k}, X_n)$ for time reversal Markov chains for any $n, k \in \mathbb{N}$.
     \begin{proof}
-        From (2), we know that the denominator of $\xi(X_n, X_{n+k})$ is independent of both $n$ and $k$. So we only have to prove that the numerator is symmetric. \\
+        By \textbf{Theorem 2.2}, we know that the denominator of $\xi(X_n, X_{n+k})$ is independent of both $n$ and $k$. So we only have to prove that the numerator is symmetric. \\
         We have to show that
         \begin{equation*}
-            \int \Var {\Pr (X_{n+k} \geq t | X_n)} d\pi(t) = \int \Var {\Pr (X_n \geq t | X_{n+k})} d\pi(t)
+            \int \Var {\Pr (X_{n+k} \geq t | X_n)} d\pi(t) = \int \Var {\Pr (X_n \geq t | X_{n+k})} d\pi(t).
         \end{equation*}
         \begin{lem}
             For a time reversible Markov chain, $X_n$ and $X_{n+k}$ are exchangable, i.e.
             \begin{equation*}
-                f_{(X_{n}, X_{n+k})}(x, y) = f_{(X_{n+k}, X_{n})}(x, y) \text{  } \forall (x, y) \in \mathbb{R}^2
+                f_{(X_{n}, X_{n+k})}(x, y) = f_{(X_{n+k}, X_{n})}(x, y) \text{  } \forall (x, y) \in \mathbb{R}^2.
             \end{equation*}
             \begin{proof}
                 It is enough to show that for any two $A, B \in \mathcal{B}(\mathbb{R})$
                 \begin{align*}
-                    \Pr(X_n \in A \& X_{n+k} \in B) = \Pr(X_{n+k} \in A \& X_{n} \in B)
+                    \Pr(X_n \in A, X_{n+k} \in B) = \Pr(X_{n+k} \in A, X_{n} \in B)
                 \end{align*}
                 which is same as
-                \begin{align*}
-                    \int_A \pi(dx) P^k(x, B) = \int_B \pi(dy) P^k(y, A) \\
-                    \int_A \int_B \pi(dx) P^k(x, dy) = \int_B \int_A \pi(dy) P^k(y, dx)
-                \end{align*}
-                To prove the above statement, it is enough to show that for any $x \in A$ and $y \in B$
-                $$\pi(dx) P^k(x, dy) = \pi(dy) P^k(y, dx)$$
-                We proceed by induction on $k$.
+                    $$\int_A \pi(dx) P^k(x, B) = \int_B \pi(dy) P^k(y, A)$$
+                    $$\Longleftrightarrow\int_A \int_B \pi(dx) P^k(x, dy) = \int_B \int_A \pi(dy) P^k(y, dx).$$
+                To prove the above statement, it is enough to show that for any $x \in A$ and $y \in B$,
+                $$\pi(dx) P^k(x, dy) = \pi(dy) P^k(y, dx).$$
+                We proceed by strong induction on $k$.
                 For $k = 1$, it is true by definition of reversibility of Markov chains.\\
                 Assume that it is true for all $1 \leq m < k$.
                 We want to prove it for $k$.\\
+                By the Chapman-Kolmogorov equation, we have
                 \begin{align*}
                     \pi(dx) P^k(x, dy) &= \pi(dx) \int_{\mathcal{X}} P^m(x, dz)\cdot P^{k-m}(z, dy)\\
-                    &= \int_{\mathcal{X}} \pi(dx) P^m(x, dz) P^{k-m}(z, dy) \\
+                    &= \int_{\mathcal{X}} \pi(dx) P^m(x, dz) P^{k-m}(z, dy)
+                \end{align*}
+                by the inductive hypothesis, we get
+                \begin{align*}
                     &= \int_{\mathcal{X}} \pi(dz) P^m(z, dx) P^{k-m}(z, dy) \\
                     &= \int_{\mathcal{X}} P^m(z, dx) \pi(dz) P^{k-m}(z, dy) \\
                     &= \int_{\mathcal{X}} P^m(z, dx) \pi(dy) P^{k-m}(y, dz) \\
-                    &= \pi(dy) \int_{\mathcal{X}}  P^{k-m}(y, dz) P^m(z, dx) \\
-                    &= \pi(dy) \cdot P^k(y, dx)
+                    &= \pi(dy) \int_{\mathcal{X}}  P^{k-m}(y, dz) P^m(z, dx)
                 \end{align*}
-
+                again by the Chapman-Kolmogorov equation, we get that
+                \begin{align*}
+                    &= \pi(dy) \cdot P^k(y, dx).
+                \end{align*}
             \end{proof}
         \end{lem}
-        By this lemma, it is clear that
+        By this \textbf{Lemma 1}, it is clear that
         \begin{equation*}
             \Pr (X_{n+k} \geq t | X_n) = \Pr (X_n \geq t | X_{n+k}) \text{  } \forall t \in \mathbb{R}
         \end{equation*}
         which implies the result above.
     \end{proof}
 \end{theorem}
-    \newpage
+
+\newpage
 
 \begin{theorem}
     $\lim_{n \rightarrow \infty} \xi(X_1, X_{n}) = 0$ for an Ergodic Markov chain
     \begin{proof}
         We have
         \begin{equation*}
-            \xi(X_1, X_{n}) = \frac{\int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t)}{\int \Var{1_{\{X_{n} \geq t\}}} d\pi(t)}
+            \xi(X_1, X_{n}) = \frac{\int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t)}{\int \Var{1_{\{X_{n} \geq t\}}} d\pi(t)}.
         \end{equation*}
-        The denominator is independent of $n$ as proven in (2), so we only need to show that the numerator goes to 0 as $n \rightarrow \infty$.\\
+        The denominator is independent of $n$ as proven in \textbf{Theorem 2.2}, so we only need to show that the numerator goes to 0 as $n \rightarrow \infty$.\\
         \begin{lem}
             $$\lim_{n \rightarrow \infty} \int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t) = \int \lim_{n \rightarrow \infty}\Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t)$$
             \begin{proof}
-                Define $f_n(t) := \Var{\Pr(X_{n} \geq t | X_{1} = x)} \cdot \pi(t) $ \\
+                Define $f_n(t) := \Var{\Pr(X_{n} \geq t | X_{1} = x)} \cdot \pi(t)$. \\
                 Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
                 Now, as $f_n$ is a product of two bounded functions, it is also bounded.
                 Set
-                $$ C:= sup_{n \in \mathbb{N}} (sup_{t \in \mathbb{R}} (\Var{\Pr(X_{n} \geq t | X_{1} = x)}))$$
+                $$ C:= \sup_{n \in \mathbb{N}} (\sup_{t \in \mathbb{R}} (\Var{\Pr(X_{n} \geq t | X_{1} = x)}))$$
                 then
                 $$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} C\pi(t)dt = C < \infty$$
                 As $f_n$ is dominated by $g$ (where $g(t) := C\cdot\pi(t) \forall t \in \mathbb{R})$, \\
-                By Lebesgue's Dominated Convergence Theorem,
-                $$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int (lim_{n \rightarrow \infty} f_n(t)) dt$$
+                by Lebesgue's Dominated Convergence Theorem,
+                $$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int (lim_{n \rightarrow \infty} f_n(t)) dt.$$
             \end{proof}
         \end{lem}
         \begin{lem}
@@ -126,31 +134,31 @@ Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with distri
                 We can write
                 \begin{align*}
                     \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \mathbb{E}[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]^2] - \mathbb{E}[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]]^2 \\
-                    &= \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2] - \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2
+                    &= \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2] - \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2.
                 \end{align*}
                 Assuming that both $\lim_n \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]$ and  $\lim_n \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2$ exist,
                 \begin{align*}
                     \lim_{n \rightarrow \infty} \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
                     &- \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2\\
                     &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
-                    &- (\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)])^2\\
+                    &- (\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)])^2.\\
                 \end{align*}
                 For any $n \in \mathbb{N}$, we can write
-                $$\mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^n] = \int_{-\infty}^{\infty} \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt$$
+                $$\mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^n] = \int_{-\infty}^{\infty} \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt.$$
                 \begin{lem}
-                    $$\lim_{n \rightarrow \infty} \int \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t) dt = \int \lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt$$
+                    $$\lim_{n \rightarrow \infty} \int \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t) dt = \int \lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt.$$
                     \begin{proof}
-                        Define $f_n(t) := \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t) $ \\
+                        Define $f_n(t) := \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)$. \\
                         Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
-                        Now, as $f_n$ is a product of two bounded functions, it is also bounded.
+                        Now, as $f_n$ is a product of two bounded functions, it is also bounded. \\
                         Now,
-                        $$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} \pi(t)dt = 1 < \infty$$
+                        $$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} \pi(t)dt = 1 < \infty.$$
                         As $f_n$ is dominated by $\pi$, \\
-                        By Lebesgue's Dominated Convergence Theorem,
-                        $$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int (lim_{n \rightarrow \infty} f_n(t)) dt$$
+                        by Lebesgue's Dominated Convergence Theorem,
+                        $$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int (\lim_{n \rightarrow \infty} f_n(t)) dt.$$
                     \end{proof}
                 \end{lem}
-                Using the above Lemma for $n = 1$ and $2$, we can take limit in both the terms inside, i.e.
+                Using the \textbf{Lemma 4} for $n = 1$ and $2$, we can take limit in both the terms inside, i.e.
                 \begin{align*}
                     \lim_{n \rightarrow \infty} \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
                     &- (\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)])^2\\
