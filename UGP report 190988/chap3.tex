@@ -1,4 +1,19 @@
 \chapter{Problems with Pearson correlation coefficent}
 \begin{definition}
-	Pearson correlation coefficient
+	$\textbf{Pearson correlation coefficient}$ measures the linear correlation of two sets of data.
+	Given a pair of random variables $(X, Y)$, pearson correlation $\rho$ is defined as
+	$$\rho = \frac{\Cov(X, Y)}{\sqrt{\Var{X}} \cdot \sqrt{\Var{Y}}}$$
 \end{definition}
+
+Pearson's correlation coefficent is very powerful in detecting monotone relations,
+has a well developed asymptotic theory. The autocorrelation function that we look at in MCMC is also defined using this.
+\newline
+
+There are two most common problems with this coefficent.
+\begin{enumerate}
+	\item Firstly, we would like that the correlation would be close to its maximum value
+	if and only if one variable looks like a noiseless function of the other variable.
+	This is not the case for the Pearson's Coefficient as it is close to $\pm 1$ iff one variable is a noiseless $\textit{linear}$ function.
+	\item Second, we would like the correlation to be close to its minimum value if and only if both the variables are independent of each other.
+	In the case of the Pearson's correlation, it is zero when the variables are independent but the converse is not always true.
+\end{enumerate}
