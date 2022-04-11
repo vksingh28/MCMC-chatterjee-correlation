@@ -1,19 +1,222 @@
 \chapter{Chatterjee's autocorrelation function}
 
-Sourav Chatterjee proposed a new correlation coefficient in his [add reference].
-This coefficient is (a) as simple as the classical ones, (b) is a consistent estimator of some measure of dependence which is 0 iff the variables are independent, and 1 iff one is a measurable function of the other, and (c) has a simple asymptotic theory under the hypothesis of independence, like the classical coefficients. \\\\
-Let $(X, Y)$ be a pair of random variables, where Y is not a constant (for our purposes, both X and Y are continuous). Let $\{(X_i, Y_i)\}_{i = 1}^{n}$ be i.i.d. pairs following the same distribution as $(X, Y)$.
-\begin{enumerate}
-    \item The case when $X_i's \text{ and } Y_i's$ have no ties. Rearrange the data as\\ $(X_{(1)}, Y_{(1)}), \dots, (X_{(n)}, Y_{(n)})$ such that $X_{(1)} < \dots < X_{(n)}$. Let $r_i$ be the rank of $Y_{(i)}$, i.e. the number of $j$ such that $Y_{(j)} \leq Y_{(i)}$.  Then the correlation coefficient $\xi_n$ is defined to be
-    $$\xi_n(X, Y) := 1-\frac{3\sum_{i=1}^{n-1} |r_{i+1} - r_i|}{n^2-1}$$.
+Sourav Chatterjee proposed a new correlation coefficient in [add reference].
+This coefficient is (a) as simple as the classical ones, (b) is a consistent estimator of some measure of dependence which is 0 iff the variables are independent, and 1 iff one is a measurable function of the other, and (c) has a simple asymptotic theory under the hypothesis of independence, like the classical coefficients.
+\newline
+\begin{definition}
+	Let $(X, Y)$ be a pair of random variables, where Y is not a constant (for our purposes, both X and Y are continuous). Let $\{(X_i, Y_i)\}_{i = 1}^{n}$ be i.i.d. pairs following the same distribution as $(X, Y)$.
+	\begin{enumerate}
+		\item The case when $X_i's \text{ and } Y_i's$ have no ties. Rearrange the data as\\ $(X_{(1)}, Y_{(1)}), \dots, (X_{(n)}, Y_{(n)})$ such that $X_{(1)} < \dots < X_{(n)}$. Let $r_i$ be the rank of $Y_{(i)}$, i.e. the number of $j$ such that $Y_{(j)} \leq Y_{(i)}$.  Then the correlation coefficient $\xi_n$ is defined to be
+		$$\xi_n(X, Y) := 1-\frac{3\sum_{i=1}^{n-1} |r_{i+1} - r_i|}{n^2-1}$$.
 
-    \item In the case of ties. If there are ties in $X_i's$, choose an increasing arrangement as follows and break ties uniformly at random. Let $r_i$ defined as above, and define $l_i$ to be the number of $j$ such that $Y_{(j)} \geq Y_{(i)}$. Define
-    $$\xi_n(X, Y) := 1-\frac{n\sum_{i=1}^{n-1} |r_{i+1} - r_i|}{2\sum_{i=1}^{n-1}l_i(n-l_i)}$$.
-    When there are no ties among the $Y_i's, l_1, \dots, l_n$ is just a permutation of $1, \dots, n$ and the denominator is just $n(n^2-1)/3$, which reduces to the definition in the no ties case.
-\end{enumerate}
+		\item In the case of ties. If there are ties in $X_i's$, choose an increasing arrangement as follows and break ties uniformly at random. Let $r_i$ defined as above, and define $l_i$ to be the number of $j$ such that $Y_{(j)} \geq Y_{(i)}$. Define
+		$$\xi_n(X, Y) := 1-\frac{n\sum_{i=1}^{n-1} |r_{i+1} - r_i|}{2\sum_{i=1}^{n-1}l_i(n-l_i)}$$.
+		When there are no ties among the $Y_i's, l_1, \dots, l_n$ is just a permutation of $1, \dots, n$ and the denominator is just $n(n^2-1)/3$, which reduces to the definition in the no ties case.
+	\end{enumerate}
+\end{definition}
+
+The following theorem shows that $\xi_n$ is a consistent estimator of some measure of dependence between the variables $X$ and $Y$.
 
 \begin{theorem}
 If $Y$ is not almost surely a constant, then as $n \rightarrow \infty$, $\xi_n(X, Y)$ converges almost surely to the deterministic limit
 $$\xi(X, Y) := \frac{\int Var(\mathbb{E}(1_{\{Y \geq t\}}|X)) d\mu(t)}{\int Var(1_{\{Y \geq t\}}) d\mu(t)}$$
 where $\mu$ is the pdf of $Y$. This limit belongs to the interval $[0, 1]$. It is 0 iff X and Y are independent, and it is 1 iff there is a measurable function $f:\mathbb{R} \rightarrow \mathbb{R}$ such that $Y = f(X)$ almost surely.
+\end{theorem}
+
+Proof of this theorem is presented in Chatterjee's original paper [og paper ref].
+\newpage
+Our aim is to create a Markov chain version of this coefficent, i.e. extend this definition to create an analogous of the autocorrelation function defined using the Pearson correlation.
+Below are some theorems that'll help us in calculating the Chatterjee's autocorrelation function.
+\newline
+
+Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with stationary distribution $\pi$.
+\begin{theorem}
+    Here we present a proof of a well known result about the Pearson Correlation Coefficient.
+    $$\Cov(X_k, X_{k+t}) \text{ is independent of } k.$$
+    \begin{proof}
+        We know that
+        $$\Cov(X_k, X_{k+t}) = \mathbb{E}[X_k X_{k+t}] - \mathbb{E}[X_k]\mathbb{E}[X_{k+t}].$$
+        Also, as $X_n$ is a stationary markov chain, $\mathbb{E}[X_n] = \mu$, where $\mu$ is the mean of the distribution $\pi$.\\
+        And,
+        $$\mathbb{E}[X_k X_{k+t}] = \int\int xyf_{(X_k, X_{k+t})}(x, y)dxdy$$
+        where $f_{(X_k, X_{k+t})}$ is the joint density of $X_k$ and $X_{k+t}$. Now as the markov chain is stationary, this density is dependent only on $t$, i.e. $$f_{(X_k, X_{k+t})} = f_{(X_1, X_{1+t})}.$$
+        As both the terms of $\Cov(X_k, X_{k+t})$ are independent of $k$, $\Cov(X_k, X_{k+t})$ is independent of $k$.\\
+    \end{proof}
+\end{theorem}
+
+The above result is used in estimating the acf using a single Markov chain. The next theorem is the analogous version of the former for the Chatterjee's correlation.
+
+\begin{theorem}
+    $\xi(X_n, X_{n+k})$ is independent of $n$, where $n$ and $k$ are in $\mathbb{N}$.
+    \begin{proof}
+        \begin{equation}
+            \xi_{(X_n, X_{n+k})} = \frac{\int \Var{\mathbb{E}[1_{\{X_{n+k} \geq t\}}|X_n=x]} d\pi(t)}{\int \Var{1_{\{X_{n+k} \geq t\}}} d\pi(t)}
+        \end{equation}
+        We'll prove that both the numerator and the denominator are independent of $k$. \\
+        We can write
+        \begin{equation*}
+            \mathbb{E}[1_{\{X_{n+k} \geq t\}}|X_n=x] = \Pr(X_{n+k} \geq t|X_n=x) \\
+        \end{equation*}
+        and by time-homogeneity of our Markov chain
+        \begin{equation*}
+            \Pr(X_{n+k} \geq t|X_n=x) = \int_t^{\infty} P^k(x, dy)
+        \end{equation*}
+        which is independent of $n$. And hence,
+        \begin{equation}
+            \int \Var{\int_t^{\infty} P^k(x, dy)} d\pi(u)
+        \end{equation}
+        is also independent of $n$.\\\\
+        Now for the denominator, we know by stationarity of our Markov chain that $X_n \sim \pi$, so for any function $f, f(X_n) \sim \pi'$ for some distribution $\pi'$, and therefore the variance will be same for all $n$.\\
+        Let $f_t: \mathbb{R} \rightarrow \mathbb{R}$ such that $f_t(X) = 1_{\{X \geq t\}}$.\\
+        We can write the denominator as
+        $$\int \Var{f_t(X_{n+k})} d\pi(t)$$
+        where,
+        $$\Var{f_t(X_{n+k})} = \Var{f_t(X_{1})}.$$
+        Therefore,
+        $$\int \Var{f_t(X_{n+k})} d\pi(t)$$
+        is independent of both $n$ and $k$.\\\\
+        As both the numerator and denominator are independent of $n$, we can conclude that $\xi(X_n, X_{n+k})$ is independent of $n$.
+    \end{proof}
+\end{theorem}
+\newpage
+In general, $\xi$ is not a symmetric in $X$ and $Y$. This is intentional and useful as we might want to study if $Y$ is a measurable function of $X$, or $X$ is a measurable function of $Y$.
+But for our purposes, it'd be great to have symmmetricity as that is required in estimating the variance in the Markov chain version of the Central Limit Theorem.
+
+\begin{theorem}
+    $\xi(X_n, X_{n+k}) = \xi(X_{n+k}, X_n)$ for time reversal Markov chains for any $n, k \in \mathbb{N}$.
+    \begin{proof}
+        By [last theorem ref], we know that the denominator of $\xi(X_n, X_{n+k})$ is independent of both $n$ and $k$. So we only have to prove that the numerator is symmetric. \\
+        We have to show that
+        \begin{equation*}
+            \int \Var {\Pr (X_{n+k} \geq t | X_n)} d\pi(t) = \int \Var {\Pr (X_n \geq t | X_{n+k})} d\pi(t).
+        \end{equation*}
+        \begin{lem}
+            For a time reversible Markov chain, $X_n$ and $X_{n+k}$ are exchangable, i.e.
+            \begin{equation*}
+                f_{(X_{n}, X_{n+k})}(x, y) = f_{(X_{n+k}, X_{n})}(x, y) \text{  } \forall (x, y) \in \mathbb{R}^2.
+            \end{equation*}
+            \begin{proof}
+                It is enough to show that for any two $A, B \in \mathcal{B}(\mathbb{R})$
+                \begin{align*}
+                    \Pr(X_n \in A, X_{n+k} \in B) = \Pr(X_{n+k} \in A, X_{n} \in B)
+                \end{align*}
+                which is same as
+                    $$\int_A \pi(dx) P^k(x, B) = \int_B \pi(dy) P^k(y, A)$$
+                    $$\Longleftrightarrow\int_A \int_B \pi(dx) P^k(x, dy) = \int_B \int_A \pi(dy) P^k(y, dx).$$
+                To prove the above statement, it is enough to show that for any $x \in A$ and $y \in B$,
+                $$\pi(dx) P^k(x, dy) = \pi(dy) P^k(y, dx).$$
+                We proceed by strong induction on $k$.
+                For $k = 1$, it is true by definition of reversibility of Markov chains.\\
+                Assume that it is true for all $1 \leq m < k$.
+                We want to prove it for $k$.\\
+                By the Chapman-Kolmogorov equation, we have
+                \begin{align*}
+                    \pi(dx) P^k(x, dy) &= \pi(dx) \int_{\mathcal{X}} P^m(x, dz)\cdot P^{k-m}(z, dy)\\
+                    &= \int_{\mathcal{X}} \pi(dx) P^m(x, dz) P^{k-m}(z, dy)
+                \end{align*}
+                by the inductive hypothesis, we get
+                \begin{align*}
+                    &= \int_{\mathcal{X}} \pi(dz) P^m(z, dx) P^{k-m}(z, dy) \\
+                    &= \int_{\mathcal{X}} P^m(z, dx) \pi(dz) P^{k-m}(z, dy) \\
+                    &= \int_{\mathcal{X}} P^m(z, dx) \pi(dy) P^{k-m}(y, dz) \\
+                    &= \pi(dy) \int_{\mathcal{X}}  P^{k-m}(y, dz) P^m(z, dx)
+                \end{align*}
+                again by the Chapman-Kolmogorov equation, we get that
+                \begin{align*}
+                    &= \pi(dy) \cdot P^k(y, dx).
+                \end{align*}
+            \end{proof}
+        \end{lem}
+        By this \textbf{Lemma 1}, it is clear that
+        \begin{equation*}
+            \Pr (X_{n+k} \geq t | X_n) = \Pr (X_n \geq t | X_{n+k}) \text{  } \forall t \in \mathbb{R}
+        \end{equation*}
+        which implies the result above.
+    \end{proof}
+\end{theorem}
+
+\newpage
+The next theorem states that as the time difference approaches $\infty$, the correlation approaches $0$.
+\begin{theorem}
+    $\lim_{n \rightarrow \infty} \xi(X_1, X_{n}) = 0$ for an Ergodic Markov chain
+    \begin{proof}
+        We have
+        \begin{equation*}
+            \xi(X_1, X_{n}) = \frac{\int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t)}{\int \Var{1_{\{X_{n} \geq t\}}} d\pi(t)}.
+        \end{equation*}
+        The denominator is independent of $n$ as proven in [last to last theorem ref], so we only need to show that the numerator goes to 0 as $n \rightarrow \infty$.\\
+        \begin{lem}
+            $$\lim_{n \rightarrow \infty} \int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t) = \int \lim_{n \rightarrow \infty}\Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t)$$
+            \begin{proof}
+                Define $f_n(t) := \Var{\Pr(X_{n} \geq t | X_{1} = x)} \cdot \pi(t)$. \\
+                Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
+                Now, as $f_n$ is a product of two bounded functions, it is also bounded.
+                Set
+                $$ C:= \sup_{n \in \mathbb{N}} (\sup_{t \in \mathbb{R}} (\Var{\Pr(X_{n} \geq t | X_{1} = x)}))$$
+                then
+                $$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} C\pi(t)dt = C < \infty$$
+                As $f_n$ is dominated by $g$ (where $g(t) := C\cdot\pi(t) \forall t \in \mathbb{R})$, \\
+                by Lebesgue's Dominated Convergence Theorem,
+                $$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int (lim_{n \rightarrow \infty} f_n(t)) dt.$$
+            \end{proof}
+        \end{lem}
+        \begin{lem}
+            $$\lim_{n \rightarrow \infty} \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} = \Var{\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]}$$
+            \begin{proof}
+                We can write
+                \begin{align*}
+                    \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \mathbb{E}[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]^2] - \mathbb{E}[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]]^2 \\
+                    &= \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2] - \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2.
+                \end{align*}
+                Assuming that both $\lim_n \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]$ and  $\lim_n \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2$ exist,
+                \begin{align*}
+                    \lim_{n \rightarrow \infty} \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+                    &- \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2\\
+                    &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+                    &- (\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)])^2.\\
+                \end{align*}
+                For any $n \in \mathbb{N}$, we can write
+                $$\mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^n] = \int_{-\infty}^{\infty} \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt.$$
+                \begin{lem}
+                    $$\lim_{n \rightarrow \infty} \int \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t) dt = \int \lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt.$$
+                    \begin{proof}
+                        Define $f_n(t) := \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)$. \\
+                        Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
+                        Now, as $f_n$ is a product of two bounded functions, it is also bounded. \\
+                        Now,
+                        $$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} \pi(t)dt = 1 < \infty.$$
+                        As $f_n$ is dominated by $\pi$, \\
+                        by Lebesgue's Dominated Convergence Theorem,
+                        $$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int (\lim_{n \rightarrow \infty} f_n(t)) dt.$$
+                    \end{proof}
+                \end{lem}
+                Using the \textbf{Lemma 4} for $n = 1$ and $2$, we can take limit in both the terms inside, i.e.
+                \begin{align*}
+                    \lim_{n \rightarrow \infty} \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+                    &- (\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)])^2\\
+                    &= \mathbb{E}[\lim_{n \rightarrow \infty} \Pr(X_{n} \geq t | X_{1} = x)^2]\\
+                    &- (\mathbb{E}[\lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)])^2\\
+                    &= \Var{\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]}
+                \end{align*}
+            \end{proof}
+        \end{lem}
+        Now, by (2.4), we know that
+        \begin{equation*}
+            \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x] = \int_t^{\infty} P^{n-1}(x, dy)
+        \end{equation*}
+        For an Ergodic Markov chain, under the Total Variation Norm, we know that
+        \begin{equation*}
+            ||P^k(x, \cdot) - F(\cdot)|| \rightarrow 0 \text{ as } k \rightarrow \infty
+        \end{equation*}
+        This implies
+        \begin{align*}
+            \lim_{n \rightarrow \infty} \int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t) &= \lim_{n \rightarrow \infty} \int \Var{\int_t^{\infty} P^{n-1}(x, dy)} d\pi(t)\\
+            &= \int \Var{\int_t^{\infty} \lim_{n \rightarrow \infty} P^{n-1}(x, dy)} d\pi(t)\\
+            &= \int \Var{\int_t^{\infty} F(dy)} d\pi(t)\\
+            &= \int \Var{1-F(t)} d\pi(t)\\
+            &= \int 0 \cdot d\pi(t)\\
+            &= 0
+        \end{align*}
+        under the Total Variation Norm.
+    \end{proof}
 \end{theorem}
