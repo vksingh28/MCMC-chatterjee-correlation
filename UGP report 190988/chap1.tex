@@ -1,11 +1,13 @@
 \chapter{Introduction}
 
 Markov chain Monte Carlo (MCMC) methods are a class of algorithms used for sampling from complicated probability distributions.
+They are often required for parameter estimation in the statistical models encountered in real-world applications.
 
-The autocorrelation function is used for assessing the quality of samples of the chain. If $X_1, X_2, \dots$ is the Markov chain,
+If $X_1, X_2, \dots$ is the Markov chain,
 then the lag-k autocorrelation is defined as
 $$\gamma_k = \rho(X_1, X_{1+k}),$$
-where $\rho$ is the Pearson's correlation coefficent. See Section [] for more details.
+where $\rho$ is the Pearson's correlation coefficent (See Section []).
+The autocorrelation function is used for assessing the quality of the Markov chain produced.
 
 The Pearson's correlation is great at detecting monotone relations in data,
 but fails when applied to non-linear situations (say $Y = \sin(X)$)
