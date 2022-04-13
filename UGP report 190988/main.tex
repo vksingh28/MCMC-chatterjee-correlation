@@ -32,7 +32,15 @@
 %% some PDF conversions mess up the ligatures.  -LB, 1/22/2014
 \usepackage{cmap}
 \usepackage[T1]{fontenc}
-\pagestyle{plain}
+\usepackage{titlesec}
+\titleformat
+{\chapter} % command
+[block] % shape
+{\bfseries\LARGE} % format
+{\thechapter.\ } % label
+{0em} % sep
+{}
+% \titlespacing*{\chapter}{0pt}{-19pt}{0pt}
 
 %% This bit allows you to either specify only the files which you wish to
 %% process, or `all' to process all files which you \include.

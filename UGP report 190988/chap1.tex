@@ -1,1 +1,25 @@
 \chapter{Introduction}
+
+Markov chain Monte Carlo (MCMC) methods are a class of algorithms used for sampling from complicated probability distributions.
+
+The autocorrelation function is used for assessing the quality of samples of the chain. If $X_1, X_2, \dots$ is the Markov chain,
+then the lag-k autocorrelation is defined as
+$$\gamma_k = \rho(X_1, X_{1+k}),$$
+where $\rho$ is the Pearson's correlation coefficent. See Section [] for more details.
+
+The Pearson's correlation is great at detecting monotone relations in data,
+but fails when applied to non-linear situations (say $Y = \sin(X)$)
+
+Chatterjee proposed a new measure of dependence in [site paper] which is
+(a) as simple as the Pearson correlation,
+(b) is a consistent estimator of some measure of dependence which is 0 if and only if the variables are independent and 1 if and only if one is a measurable function of the other, and
+(c) has a simple asymptotic theory under the hypothesis of independence, like the Pearson correlation.
+See Section [] for more on this.
+
+The advantages of this new measure motivated us to define a new autocorrelation function using the Chatterjee's correlation coefficent instead of Pearson's.
+In order to use this in MCMC theory, two things are needed,
+
+1. Some properties that are followed by the classical acf should also hold true for our version for Markov chains (See Section []).
+
+2. As we don't have the luxury of i.i.d. draws, for which the consistency of the estimator of Chatterjee's correlation holds (See []),
+	we need to prove it for the case of MCMC samples we have (See Section []).
