@@ -1,33 +1,33 @@
 \chapter{Preliminaries}
-\section{Introduction to Markov chain Monte Carlo}
 \begin{definition}
-	(Time-homogeneous markov chain). The $\mathbb{R}$-valued sequence of random variables $X_1, X_2, \dots$ is a time-homogeneous Markov chain if for all $A \in \mathcal{B}(\mathbb{R})$ and for all $n \in \mathbb{N}$
+	$\textbf{(Time-homogeneous markov chain).}$ The $\mathbb{R}$-valued sequence of random variables $X_1, X_2, \dots$ is a time-homogeneous Markov chain if for all $A \in \mathcal{B}(\mathbb{R})$ and for all $n \in \mathbb{N}$
 	$$\Pr(X_{n+1} \in A | X_1, X_2, \dots, X_n) = \Pr(X_{n+1} \in A | X_n)$$
 \end{definition}
 \begin{definition}
-	(Markov Transition Kernel). A Markov transition kernel is a map $P: \mathbb{R} \times \mathcal{B}(\mathbb{R}) \rightarrow [0, 1]$ such that
+	$\textbf{(Markov Transition Kernel).}$ A Markov transition kernel is a map $P: \mathbb{R} \times \mathcal{B}(\mathbb{R}) \rightarrow [0, 1]$ such that
 	\begin{enumerate}
 		\item for all $A \in \mathcal{B}(\mathbb{R}), P(. A)$ is a measurable on $\mathbb{R}$.
 		\item for all $x \in \mathbb{R}, P(x, .)$ is a probability measure on $\mathcal{B}(\mathbb{R})$.
 	\end{enumerate}
 \end{definition}
 \begin{definition}
-	stationarity
+	$\textbf{(Stationarity):}$ A discrete-time Markov chain $X_1, X_2, \dots$ is stationary if the distribution of $X_n$ does not depend on $n$.
 \end{definition}
 \begin{definition}
-	ergodicity
+	\textbf{(Time Reversibility).}
 \end{definition}
 \begin{definition}
-	time reversibility
+	\textbf{(Total Variation Norm).}
 \end{definition}
 \begin{definition}
-	total variation norm
+	\textbf{(Ergodicity).}
 \end{definition}
 \begin{definition}
-	chapman Kolmogorov
+	\textbf{(Chapman-Kolmogorov Equation).}
 \end{definition}
-
-\section{Basic Theorems from Measure Theory}
+\begin{definition}
+	\textbf{(Glivenko-Cantelli Theorem).}
+\end{definition}
 \begin{theorem}
-	Lebesgue's DCT
+	\textbf{(Lebesgue's Dominated Convergence Theorem).}
 \end{theorem}
