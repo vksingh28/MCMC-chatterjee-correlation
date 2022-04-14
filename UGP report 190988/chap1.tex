@@ -9,23 +9,24 @@ $$\gamma_k = \rho(X_1, X_{1+k}),$$
 where $\rho$ is the Pearson's correlation coefficent (See Section []).
 The autocorrelation function is used for assessing the quality of the Markov chain produced.
 
-The Pearson's correlation is great at detecting monotone relations in data,
+Pearson's correlation is great at detecting monotone relations in data,
 but fails when applied to non-linear situations (say $Y = \sin(X)$)
 
-Chatterjee proposed a new measure of dependence in [site paper] which is
+Chatterjee proposed a new measure of dependence in [site paper], which is
 (a) as simple as the Pearson correlation,
-(b) is a consistent estimator of some measure of dependence which is 0 if and only if the variables are independent and 1 if and only if one is a measurable function of the other, and
+(b) is 0 if and only if the variables are independent and 1 if and only if one is a measurable function of the other, and
 (c) has a simple asymptotic theory under the hypothesis of independence, like the Pearson correlation.
 See Section [] for more on this.
 
-The advantages of this new measure motivated us to define a new autocorrelation function using the Chatterjee's correlation coefficent instead of Pearson's.
+The advantages of this new measure motivated us to define a new autocorrelation function using Chatterjee's correlation coefficient instead of Pearson's.
 In order to use this in MCMC theory, two things are needed,
 
-1. Some properties that are followed by the classical acf should also hold true for our version for Markov chains (See Section []).
+1. Some properties that are followed by the classical ACF should also hold for our version for Markov chains (See Section []).
 
-2. As we don't have the luxury of i.i.d. draws, for which the consistency of the estimator of Chatterjee's correlation holds (See []),
-	we need to prove it for the case of MCMC samples we have (See Section []).
+2. As we do not have the luxury of i.i.d. draws, for which the consistency of the estimator of Chatterjee's correlation holds (See []),
+    we need to prove it for the case of MCMC samples we have (See Section []).
 
-We were able to prove three new results related to the Chatterjee's autocorrelation that also hold true for the classical acf.
-We also believe that the estimator for Chatterjee's correlation coefficent is consistent even when we're using correlated draws from a stationary Markov chain.
-We were able to change some parts of the proof of consistency presented in [og paper], and believe that the parts left can also be done and are left as future work.
+Three results for Chatterjee's correlation that are analogous to their Pearson counterpart are presented in Section [].
+We also believe that the estimator for Chatterjee's correlation coefficient is consistent even when we are using correlated draws from a stationary Markov chain.
+Some ideas are presented (See Section []) inspired by the proof of consistency in [] of the i.i.d. estimator on how one should go about it.
+It is not yet complete and is left as future work.
