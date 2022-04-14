@@ -126,6 +126,17 @@
 	We were not able to complete it in this project and is left as future work.
 
 \section{Markov chain Monte Carlo}
+	A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ taking values in an arbitrary general state space and having the Markov property,
+	i.e. the conditional distribution of $X_{n+1}$ given the past $X_1, \dots X_n$, depends only on the present state $X_n$.
+
+	A Markov chain can be specified by two things, the intital distribution and the transition probabilities.
+	The initial distribution is the marginal of $X_1$. By transition probabilities, we mean the conditional distribution of $X_{n+1}$ given $X_n$.
+	We always assume stationary transition probabilities, i.e. the conditional $X_{n+1}|X_n$ is independent of $n$.\\
+	A Markov chain is said to be stationary if the distribution of $X_n$ is independent of $n$,
+	and ergodic if it converges to the invariant distribution regardless of the choice of the initial distribution.\\
+	A stationary Markov chain is time-reversible w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable.
+
+
 
 \section{Pearson's correlation coefficient}
 	$\textbf{Pearson correlation coefficient}$ measures the linear correlation of two sets of data.
@@ -180,6 +191,208 @@
 	\end{enumerate}
 
 \section{Chatterjee's autocorrelation function}
+	The aim of this project is to create a new autocorrelation function (ACF) using the Chatterjee's correlation coefficient, and study it's behaviour when applied to Markov chains.\\
+	Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with stationary distribution $\pi$.
+	We define the new lag-k ACF as follows
+	$$\gamma_{k, n}' = \xi(X_n, X_{n+k}).$$
+
+	\begin{theorem}
+		Here we present a proof of a well known result about the Pearson Correlation Coefficient.
+		$$\Cov(X_n, X_{n+k}) \text{ is independent of } n.$$
+		\begin{proof}
+			We know that
+			$$\Cov(X_n, X_{n+k}) = \mathbb{E}[X_n X_{n+k}] - \mathbb{E}[X_n]\mathbb{E}[X_{n+k}].$$
+			Also, as $X_n$ is a stationary markov chain, $\mathbb{E}[X_n] = \mu$, where $\mu$ is the mean of the distribution $\pi$.\\
+			And,
+			$$\mathbb{E}[X_n X_{n+k}] = \int\int xyf_{(X_n, X_{n+k})}(x, y)dxdy$$
+			where $f_{(X_n, X_{n+k})}$ is the joint density of $X_n$ and $X_{n+k}$. Now as the markov chain is stationary, this density is dependent only on $k$, i.e. $$f_{(X_k, X_{k+n})} = f_{(X_1, X_{1+n})}.$$
+			As both the terms of $\Cov(X_n, X_{n+k})$ are independent of $n$, $\Cov(X_n, X_{n+k})$ is independent of $n$.\\
+		\end{proof}
+	\end{theorem}
+	This theorem is important as it allows us to estimate the ACF without drawing multiple Markov chains.
+	This suggests that the same property should also hold for $\gamma_{k, n}'$, proved in the next theorem.
+
+	\begin{theorem}
+		$\xi(X_n, X_{n+k})$ is independent of $n$, where $n$ and $k$ are in $\mathbb{N}$.
+		\begin{proof}
+			\begin{equation}
+				\xi_{(X_n, X_{n+k})} = \frac{\int \Var[\mathbb{E}[1_{\{X_{n+k} \geq t\}}|X_n=x]] d\pi(t)}{\int \Var[1_{\{X_{n+k} \geq t\}}] d\pi(t)}
+			\end{equation}
+			We'll prove that both the numerator and the denominator are independent of $k$. \\
+			We can write
+			\begin{equation*}
+				\mathbb{E}[1_{\{X_{n+k} \geq t\}}|X_n=x] = \Pr(X_{n+k} \geq t|X_n=x) \\
+			\end{equation*}
+			and by time-homogeneity of our Markov chain
+			\begin{equation*}
+				\Pr(X_{n+k} \geq t|X_n=x) = \int_t^{\infty} P^k(x, dy)
+			\end{equation*}
+			which is independent of $n$. And hence,
+			\begin{equation}
+				\int \Var\left[ \int_t^{\infty} P^k(x, dy)\right] d\pi(u)
+			\end{equation}
+			is also independent of $n$.\\\\
+			Now for the denominator, we know by stationarity of our Markov chain that $X_n \sim \pi$, so for any function $f, f(X_n) \sim \pi'$ for some distribution $\pi'$, and therefore the variance will be same for all $n$.\\
+			Let $f_t: \mathbb{R} \rightarrow \mathbb{R}$ such that $f_t(X) = 1_{\{X \geq t\}}$.\\
+			We can write the denominator as
+			$$\int \Var[f_t(X _{n+k})] d\pi(t)$$
+			where,
+			$$\Var[f_t(X_{n+k})] = \Var[f_t(X_{1})].$$
+			Therefore,
+			$$\int \Var[f_t(X_{n+k})] d\pi(t)$$
+			is independent of both $n$ and $k$.\\\\
+			As both the numerator and denominator are independent of $n$, we can conclude that $\xi(X_n, X_{n+k})$ is independent of $n$.
+		\end{proof}
+	\end{theorem}
+	Because of Theorem [], we can safely denote this new ACF by $\gamma_k'$.
+
+	Now, if the Central Limit Theorem holds for a Markov chain, the variance is as follows
+	$$\sigma_{\text{clt}}^2 = \sum_{k=-\infty}^{\infty} \gamma_k.$$
+
+	As $\gamma_k$ is symmetric, we get that
+	$$\sigma_{\text{clt}}^2 = \gamma_0 + 2\sum_{k=1}^{\infty} \gamma_k.$$
+	Now $\xi$ is not symmetric in general, but for our purposes, it'd be great to have symmmetricity so that we can do a similar step as above.
+	We've proved the symmmetricity of $\xi$ in the case of time reversible Markov chains.
+
+	\begin{theorem}
+		$\xi(X_n, X_{n+k}) = \xi(X_{n+k}, X_n)$ for time reversal Markov chains for any $n, k \in \mathbb{N}$.
+		\begin{proof}
+			By [last theorem ref], we know that the denominator of $\xi(X_n, X_{n+k})$ is independent of both $n$ and $k$. So we only have to prove that the numerator is symmetric. \\
+			We have to show that
+			\begin{equation*}
+				\int \Var [\Pr (X_{n+k} \geq t | X_n)] d\pi(t) = \int \Var [\Pr (X_n \geq t | X_{n+k})] d\pi(t).
+			\end{equation*}
+			\begin{lemma}
+				For a time reversible Markov chain, $X_n$ and $X_{n+k}$ are exchangable, i.e.
+				\begin{equation*}
+					f_{(X_{n}, X_{n+k})}(x, y) = f_{(X_{n+k}, X_{n})}(x, y) \text{  } \forall (x, y) \in \mathbb{R}^2.
+				\end{equation*}
+				\begin{proof}
+					It is enough to show that for any two $A, B \in \mathcal{B}(\mathbb{R})$
+					\begin{align*}
+						\Pr(X_n \in A, X_{n+k} \in B) = \Pr(X_{n+k} \in A, X_{n} \in B)
+					\end{align*}
+					which is same as
+						$$\int_A \pi(dx) P^k(x, B) = \int_B \pi(dy) P^k(y, A)$$
+						$$\Longleftrightarrow\int_A \int_B \pi(dx) P^k(x, dy) = \int_B \int_A \pi(dy) P^k(y, dx).$$
+					To prove the above statement, it is enough to show that for any $x \in A$ and $y \in B$,
+					$$\pi(dx) P^k(x, dy) = \pi(dy) P^k(y, dx).$$
+					We proceed by strong induction on $k$.
+					For $k = 1$, it is true by definition of reversibility of Markov chains.\\
+					Assume that it is true for all $1 \leq m < k$.
+					We want to prove it for $k$.\\
+					By the Chapman-Kolmogorov equation, we have
+					\begin{align*}
+						\pi(dx) P^k(x, dy) &= \pi(dx) \int_{\mathcal{X}} P^m(x, dz)\cdot P^{k-m}(z, dy)\\
+						&= \int_{\mathcal{X}} \pi(dx) P^m(x, dz) P^{k-m}(z, dy)
+					\end{align*}
+					by the inductive hypothesis, we get
+					\begin{align*}
+						&= \int_{\mathcal{X}} \pi(dz) P^m(z, dx) P^{k-m}(z, dy) \\
+						&= \int_{\mathcal{X}} P^m(z, dx) \pi(dz) P^{k-m}(z, dy) \\
+						&= \int_{\mathcal{X}} P^m(z, dx) \pi(dy) P^{k-m}(y, dz) \\
+						&= \pi(dy) \int_{\mathcal{X}}  P^{k-m}(y, dz) P^m(z, dx)
+					\end{align*}
+					again by the Chapman-Kolmogorov equation, we get that
+					\begin{align*}
+						&= \pi(dy) \cdot P^k(y, dx).
+					\end{align*}
+				\end{proof}
+			\end{lemma}
+			By this \textbf{Lemma []}, it is clear that
+			\begin{equation*}
+				\Pr (X_{n+k} \geq t | X_n) = \Pr (X_n \geq t | X_{n+k}) \text{  } \forall t \in \mathbb{R}
+			\end{equation*}
+			which implies the result above.
+		\end{proof}
+	\end{theorem}
+
+	For an Ergodic Markov chain, we can intuitively argue that the correlation should approach $0$ as the time difference increases.
+	In the next theorem, we've proved that this holds true for $\xi$.
+	\begin{theorem}
+		$\lim_{n \rightarrow \infty} \xi(X_1, X_{n}) = 0$ for an Ergodic Markov chain
+		\begin{proof}
+			We have
+			\begin{equation*}
+				\xi(X_1, X_{n}) = \frac{\int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t)}{\int \Var{1_{\{X_{n} \geq t\}}} d\pi(t)}.
+			\end{equation*}
+			The denominator is independent of $n$ as proven in [last to last theorem ref], so we only need to show that the numerator goes to 0 as $n \rightarrow \infty$.\\
+			\begin{lemma}
+				$$\lim_{n \rightarrow \infty} \int \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t) = \int \lim_{n \rightarrow \infty}\Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t)$$
+				\begin{proof}
+					Define $f_n(t) := \Var[\Pr(X_{n} \geq t | X_{1} = x)] \cdot \pi(t)$. \\
+					Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
+					Now, as $f_n$ is a product of two bounded functions, it is also bounded.
+					Set
+					$$ C:= \sup_{n \in \mathbb{N}} \left(\sup_{t \in \mathbb{R}} \left(\Var[\Pr(X_{n} \geq t | X_{1} = x)]\right)\right)$$
+					then
+					$$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} C\cdot\pi(t)dt = C < \infty$$
+					As $f_n$ is dominated by $g$ (where $g(t) := C\cdot\pi(t) \forall t \in \mathbb{R})$, \\
+					by Lebesgue's Dominated Convergence Theorem,
+					$$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int \left(\lim_{n \rightarrow \infty} f_n(t)\right) dt.$$
+				\end{proof}
+			\end{lemma}
+			\begin{lemma}
+				$$\lim_{n \rightarrow \infty} \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] = \Var\left[\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]\right]$$
+				\begin{proof}
+					We can write
+					\begin{align*}
+						\Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] &= \mathbb{E}[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]^2] - \mathbb{E}[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]]^2 \\
+						&= \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2] - \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2.
+					\end{align*}
+					Assuming that both $\lim_n \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]$ and  $\lim_n \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2$ exist,
+					\begin{align*}
+						\lim_{n \rightarrow \infty} \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+						&- \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]^2\\
+						&= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+						&- \left(\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]\right)^2.\\
+					\end{align*}
+					For any $n \in \mathbb{N}$, we can write
+					$$\mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^n] = \int_{-\infty}^{\infty} \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt.$$
+					\begin{lemma}
+						$$\lim_{n \rightarrow \infty} \int \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t) dt = \int \lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt.$$
+						\begin{proof}
+							Define $f_n(t) := \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)$. \\
+							Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
+							Now, as $f_n$ is a product of two bounded functions, it is also bounded. \\
+							Now,
+							$$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} \pi(t)dt = 1 < \infty.$$
+							As $f_n$ is dominated by $\pi$, \\
+							by Lebesgue's Dominated Convergence Theorem,
+							$$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int \left(\lim_{n \rightarrow \infty} f_n(t)\right) dt.$$
+						\end{proof}
+					\end{lemma}
+					Using the \textbf{Lemma 4} for $n = 1$ and $2$, we can take limit in both the terms inside, i.e.
+					\begin{align*}
+						\lim_{n \rightarrow \infty} \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
+						&- \left(\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]\right)^2\\
+						&= \mathbb{E}\left[\lim_{n \rightarrow \infty} \Pr(X_{n} \geq t | X_{1} = x)^2\right]\\
+						&- \left(\mathbb{E}\left[\lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)\right]\right)^2\\
+						&= \Var\left[\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]\right]
+					\end{align*}
+				\end{proof}
+			\end{lemma}
+			Now, by (2.4), we know that
+			\begin{equation*}
+				\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x] = \int_t^{\infty} P^{n-1}(x, dy)
+			\end{equation*}
+			For an Ergodic Markov chain, under the Total Variation Norm, we know that
+			\begin{equation*}
+				||P^k(x, \cdot) - F(\cdot)|| \rightarrow 0 \text{ as } k \rightarrow \infty
+			\end{equation*}
+			This implies
+			\begin{align*}
+				\lim_{n \rightarrow \infty} \int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t) &= \lim_{n \rightarrow \infty} \int \Var{\int_t^{\infty} P^{n-1}(x, dy)} d\pi(t)\\
+				&= \int \Var{\int_t^{\infty} \lim_{n \rightarrow \infty} P^{n-1}(x, dy)} d\pi(t)\\
+				&= \int \Var\left[\int_t^{\infty} F(dy)\right] d\pi(t)\\
+				&= \int \Var[1-F(t)] d\pi(t)\\
+				&= \int 0 \cdot d\pi(t)\\
+				&= 0
+			\end{align*}
+			under the Total Variation Norm.
+		\end{proof}
+	\end{theorem}
+
 
 \section{Proof sketch of Theorem [] for correlated samples}
 
