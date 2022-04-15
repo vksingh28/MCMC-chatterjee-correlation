@@ -114,7 +114,7 @@
 	where $\rho$ is the Pearson's correlation coefficent (See Section 3).
 	The autocorrelation function is used to measure the quality of the Markov chain produced.
 	Pearson's correlation used above is great at detecting monotone relations in data,
-	but doesn't perform well enough when applied to non-linear situations (say $\rho(X, \sin(X))$)
+	but doesn't perform well enough when applied to non-linear situations (say $\rho(X, \sin(X))$).
 
 	Chatterjee proposed a new measure of dependence in \cite{chatterjee2020sourav}, which is
 	(a) as simple as the Pearson correlation,
@@ -134,19 +134,19 @@
 
 \section{Markov chain Monte Carlo}
 	A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ taking values in an arbitrary general state space and having the Markov property,
-	i.e. the conditional distribution of $X_{n+1}$ given the past $X_1, \dots X_n$, depends only on the present state $X_n$. (\cite{vats2017multivariate})
+	i.e. the conditional distribution of $X_{n+1}$ given the past $X_1, \dots X_n$, depends only on the present state $X_n$ (\cite{vats2017multivariate}).
 
 	A Markov chain can be specified by two things, the intital distribution and the transition probabilities.
 	The initial distribution is the marginal of $X_1$. By transition probabilities, we mean the conditional distribution of $X_{n+1}$ given $X_n$.
 	We always assume stationary transition probabilities, i.e. the conditional $X_{n+1}|X_n$ is independent of $n$.\\
 	A Markov chain is said to be stationary if the distribution of $X_n$ is independent of $n$,
 	and ergodic if it converges to the invariant distribution regardless of the choice of the initial distribution.\\
-	A stationary Markov chain is time-reversible w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable. (\cite{geyer2005charles}, \cite{mcmc2011handbook})
+	A stationary Markov chain is time-reversible w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable (\cite{geyer2005charles}, \cite{mcmc2011handbook}).
 
 \section{Pearson's Correlation Coefficient}
-	$\textbf{Pearson correlation coefficient}$ measures the linear correlation of two sets of data.
+	Pearson correlation coefficient measures the linear correlation of two sets of data.
 	Given a pair of random variables $(X, Y)$, Pearson correlation $\rho$ is defined as
-	$$\rho = \frac{\Cov(X, Y)}{\sqrt{\Var[X]} \cdot \sqrt{\Var[Y]}}$$
+	$$\rho = \frac{\Cov(X, Y)}{\sqrt{\Var[X]} \cdot \sqrt{\Var[Y]}}.$$
 
 	Pearson's coefficent is very powerful in detecting monotone relations and
 	has a well developed asymptotic theory. The autocorrelation function that we discussed about is also defined using this.
@@ -221,7 +221,7 @@
 		$\xi(X_n, X_{n+k})$ is independent of $n$, where $n$ and $k$ are in $\mathbb{N}$.
 		\begin{proof}
 			\begin{equation}
-				\xi_{(X_n, X_{n+k})} = \frac{\int \Var[\mathbb{E}[1_{\{X_{n+k} \geq t\}}|X_n=x]] d\pi(t)}{\int \Var[1_{\{X_{n+k} \geq t\}}] d\pi(t)}
+				\xi_{(X_n, X_{n+k})} = \frac{\int \Var[\mathbb{E}[1_{\{X_{n+k} \geq t\}}|X_n=x]] d\pi(t)}{\int \Var[1_{\{X_{n+k} \geq t\}}] d\pi(t)}.
 			\end{equation}
 			We'll prove that both the numerator and the denominator are independent of $k$. \\
 			We can write
@@ -315,7 +315,7 @@
 	For an Ergodic Markov chain, we can intuitively argue that the correlation should approach $0$ as the time difference increases.
 	In the next theorem, we've proved that this holds true for $\xi$.
 	\begin{theorem}
-		$\lim_{n \rightarrow \infty} \xi(X_1, X_{n}) = 0$ for an Ergodic Markov chain
+		$\lim_{n \rightarrow \infty} \xi(X_1, X_{n}) = 0$ for an Ergodic Markov chain.
 		\begin{proof}
 			We have
 			\begin{equation*}
@@ -323,7 +323,7 @@
 			\end{equation*}
 			The denominator is independent of $n$ as proven in Theorem 5.2, so we only need to show that the numerator goes to 0 as $n \rightarrow \infty$.\\
 			\begin{lemma}
-				$$\lim_{n \rightarrow \infty} \int \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t) = \int \lim_{n \rightarrow \infty}\Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t)$$
+				$$\lim_{n \rightarrow \infty} \int \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t) = \int \lim_{n \rightarrow \infty}\Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t).$$
 				\begin{proof}
 					Define $f_n(t) := \Var[\Pr(X_{n} \geq t | X_{1} = x)] \cdot \pi(t)$. \\
 					It is easy to see that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
@@ -331,14 +331,14 @@
 					Set
 					$$ C:= \sup_{n \in \mathbb{N}} \left(\sup_{t \in \mathbb{R}} \left(\Var[\Pr(X_{n} \geq t | X_{1} = x)]\right)\right)$$
 					then
-					$$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} C\cdot\pi(t)dt = C < \infty$$
+					$$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} C\cdot\pi(t)dt = C < \infty.$$
 					As $f_n$ is dominated by $g$ (where $g(t) := C\cdot\pi(t) \forall t \in \mathbb{R})$, \\
 					by Lebesgue's Dominated Convergence Theorem (\cite{kl2001chung}),
 					$$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int \left(\lim_{n \rightarrow \infty} f_n(t)\right) dt.$$
 				\end{proof}
 			\end{lemma}
 			\begin{lemma}
-				$$\lim_{n \rightarrow \infty} \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] = \Var\left[\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]\right]$$
+				$$\lim_{n \rightarrow \infty} \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] = \Var\left[\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]\right].$$
 				\begin{proof}
 					We can write
 					\begin{align*}
@@ -373,7 +373,7 @@
 						&- \left(\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]\right)^2\\
 						&= \mathbb{E}\left[\lim_{n \rightarrow \infty} \Pr(X_{n} \geq t | X_{1} = x)^2\right]\\
 						&- \left(\mathbb{E}\left[\lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)\right]\right)^2\\
-						&= \Var\left[\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]\right]
+						&= \Var\left[\lim_{n \rightarrow \infty} \mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]\right].
 					\end{align*}
 				\end{proof}
 			\end{lemma}
@@ -391,7 +391,7 @@
 			\end{equation*}
 			So, define $$G_{k, x}(t) := \int_{-\infty}^{t} P^{k}(x, dy)$$
 			i.e. the cdf of $P^k(x, \cdot)$. By ergodicity, we get that
-			$$G_{k, x}(t) \xrightarrow{d} F(t)$$
+			$$G_{k, x}(t) \xrightarrow{d} F(t).$$
 			This implies
 			\begin{align*}
 				\lim_{n \rightarrow \infty} \int \Var\left[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]\right] d\pi(t) &= \lim_{n \rightarrow \infty} \int \Var\left[\int_t^{\infty} P^{n-1}(x, dy)\right] d\pi(t)\\
@@ -399,7 +399,7 @@
 				&= \int \Var\left[\lim_{n \rightarrow \infty}(1-G_{n-1, x})\right] d\pi(t)\\
 				&= \int \Var\left[1-F(t)\right] d\pi(t)\\
 				&= \int 0 \cdot d\pi(t)\\
-				&= 0
+				&= 0.
 			\end{align*}
 		\end{proof}
 	\end{theorem}
