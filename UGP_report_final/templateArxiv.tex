@@ -134,7 +134,7 @@
 	and ergodic if it converges to the invariant distribution regardless of the choice of the initial distribution.\\
 	A stationary Markov chain is time-reversible w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable.
 
-\section{Pearson's correlation coefficient}
+\section{Pearson's Correlation Coefficient}
 	$\textbf{Pearson correlation coefficient}$ measures the linear correlation of two sets of data.
 	Given a pair of random variables $(X, Y)$, Pearson correlation $\rho$ is defined as
 	$$\rho = \frac{\Cov(X, Y)}{\sqrt{\Var[X]} \cdot \sqrt{\Var[Y]}}$$
@@ -152,7 +152,7 @@
 			In the case of the Pearson, it is zero when the variables are independent but the converse is not always true.
 		\end{enumerate}
 
-\section{Chatterjee's correlation coefficient}
+\section{Chatterjee's Correlation Coefficient}
 	In order to solve these problems, Chatterjee came up with a new correlation coefficient which overcomes these drawbacks and also has a consistent estimator which is computationally efficient.\\
 	Chatterjee's correlation $\xi$ is defined as
 	$$\xi(X, Y) = \frac{\int Var(\mathbb{E}(1_{\{Y \geq t\}}|X)) d\mu(t)}{\int Var(1_{\{Y \geq t\}}) d\mu(t)},$$
@@ -186,7 +186,7 @@
 		\item $\xi_n$ is based on ranks, and for the same reason, it can be computed in $O(n\log n)$.
 	\end{enumerate}
 
-\section{Chatterjee's autocorrelation function}
+\section{Chatterjee's Autocorrelation Function}
 	The aim of this project is to create a new autocorrelation function (ACF) using the Chatterjee's correlation coefficient, and study it's behaviour when applied to Markov chains.\\
 	Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with stationary distribution $\pi$.
 	We define the new lag-k ACF as follows
