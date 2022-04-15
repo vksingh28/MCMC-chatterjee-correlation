@@ -98,7 +98,7 @@
 \maketitle
 \begin{abstract}
     Markov chain Monte Carlo (MCMC) algorithms are used to estimate features of interest of a distribution.
-    The ACF used for assessing the quality of the produced chain and calculating the variance of Markov chain CLT is defined using Pearson correlation.
+    The Autocorrelation Funciton (ACF) used for assessing the quality of the produced chain and calculating the variance of Markov chain Central Limit Theorem is defined using Pearson correlation.
     In his recent paper, Chatterjee proposed a coefficient that solves some of Pearson correlation's problems.
     We present a new ACF defined using this coefficient and examine its behaviour on stationary Markov chains.
     We proved some results and sketched out a path for proving the consistency of the estimator of this ACF estimated using correlated draws.
@@ -129,8 +129,7 @@
 		we need to prove it for the case of MCMC samples we have.\\
 	We proved three results for Chatterjee's correlation that are analogous to their Pearson counterpart (See Section 5).
 	We also believe that the estimator for Chatterjee's correlation coefficient is consistent even when we are using correlated draws from a stationary Markov chain.
-	Some ideas are presented (See Section 6) inspired by the proof of consistency in \cite{chatterjee2020sourav} of the i.i.d. estimator on how one should go about it.
-	We were not able to complete it in this project and is left as future work.
+	Some ideas are presented to prove this belief (See Section 6) inspired by the proof of consistency in \cite{chatterjee2020sourav} of the estimator using i.i.d. samples.
 
 \newpage
 \section{Markov chain Monte Carlo}
@@ -487,6 +486,16 @@
     then this faster convergence rate might make it a better alternative for estimating the variance.
 
 %Bibliography
+
+\section{Conclusion and Future Work}
+	We studied the properties of a new correlation coefficient defined by Chatterjee.
+	We then used that definition to define a new autocorrelation function to use in the context of MCMC.
+	We proved three new results that have analogous counterparts for the classical ACF.
+	We also presented some ideas and a pathway for proving the consistency of the estimator of Chatterjee's coefficient but could not complete it and is left as future work.
+	We also believe that Chatterjee's ACF converges faster than the Classical ACF, and if we can come up with a way to calculate the variance of the Markov chain CLT using the new ACF,
+	then this coefficient will be helpful in the estimation of the variance, which is a research field on its own.
+
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 
