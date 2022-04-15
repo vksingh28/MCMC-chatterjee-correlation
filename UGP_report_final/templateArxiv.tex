@@ -98,8 +98,8 @@
 \maketitle
 \begin{abstract}
     Markov chain Monte Carlo (MCMC) algorithms are used to estimate features of interest of a distribution.
-    The ACF used for assessing the quality of the produced chain and calculating the variance of Markov chain CLT is defined using the Pearson correlation.
-    In his recent paper, Chatterjee proposed a coefficient that solves some of the Pearson correlation's problems.
+    The ACF used for assessing the quality of the produced chain and calculating the variance of Markov chain CLT is defined using Pearson correlation.
+    In his recent paper, Chatterjee proposed a coefficient that solves some of Pearson correlation's problems.
     We present a new ACF defined using this coefficient and examine its behaviour on stationary Markov chains.
     We proved some results and sketched out a path for proving the consistency of the estimator of this ACF estimated using correlated draws.
 \end{abstract}
@@ -111,15 +111,15 @@
 	If $X_1, X_2, \dots$ is a Markov chain,
 	then the lag-k autocorrelation is defined as
 	$$\gamma_k = \rho(X_1, X_{1+k}),$$
-	where $\rho$ is the Pearson's correlation coefficent (See Section 3).
+	where $\rho$ is Pearson's correlation coefficent (See Section 3).
 	The autocorrelation function is used to measure the quality of the Markov chain produced.
 	Pearson's correlation used above is great at detecting monotone relations in data,
 	but doesn't perform well enough when applied to non-linear situations (say $\rho(X, \sin(X))$).
 
 	Chatterjee proposed a new measure of dependence in \cite{chatterjee2020sourav}, which is
-	(a) as simple as the Pearson correlation,
+	(a) as simple as Pearson correlation,
 	(b) is 0 if and only if the variables are independent and 1 if and only if one is a measurable function of the other, and
-	(c) has a simple asymptotic theory under the hypothesis of independence, like the Pearson correlation.
+	(c) has a simple asymptotic theory under the hypothesis of independence, like Pearson correlation.
 	See Section 4 for more on this.
 
 	The advantages of this new measure motivated us to define a new autocorrelation function using Chatterjee's correlation coefficient instead of Pearson's.
@@ -158,7 +158,7 @@
 			if and only if one variable looks like a noiseless function of the other variable.
 			This is not the case as $\rho$ is close to $\pm 1$ iff one variable is a noiseless $\textit{linear}$ function.
 			\item Second, we would like the correlation to be close to its minimum value if and only if both the variables are independent of each other.
-			In the case of the Pearson, it is zero when the variables are independent but the converse is not always true.
+			In the case of Pearson, it is zero when the variables are independent but the converse is not always true.
 		\end{enumerate}
 
 \section{Chatterjee's Correlation Coefficient}
@@ -196,13 +196,13 @@
 	\end{enumerate}
 
 \section{Chatterjee's Autocorrelation Function}
-	The aim of this project is to create a new autocorrelation function (ACF) using the Chatterjee's correlation coefficient, and study it's behaviour when applied to Markov chains.\\
+	The aim of this project is to create a new autocorrelation function (ACF) using Chatterjee's correlation coefficient, and study it's behaviour when applied to Markov chains.\\
 	Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with stationary distribution $\pi$.
 	We define the new lag-k ACF as follows
 	$$\gamma_{k, n}' := \xi(X_n, X_{n+k}).$$
 
 	\begin{theorem}
-		Here we present a proof of a well known result about the Pearson Correlation Coefficient.
+		Here we present a proof of a well known result about Pearson Correlation Coefficient.
 		$$\Cov(X_n, X_{n+k}) \text{ is independent of } n.$$
 		\begin{proof}
 			We know that
@@ -286,7 +286,7 @@
 					For $k = 1$, it is true by definition of reversibility of Markov chains.\\
 					Assume that it is true for all $1 \leq m < k$.
 					We want to prove it for $k$.\\
-					By the Chapman-Kolmogorov equation (\cite{mcmc2011handbook}), we have
+					By Chapman-Kolmogorov equation (\cite{mcmc2011handbook}), we have
 					\begin{align*}
 						\pi(dx) P^k(x, dy) &= \pi(dx) \int_{\mathcal{X}} P^m(x, dz)\cdot P^{k-m}(z, dy)\\
 						&= \int_{\mathcal{X}} \pi(dx) P^m(x, dz) P^{k-m}(z, dy)
@@ -298,7 +298,7 @@
 						&= \int_{\mathcal{X}} P^m(z, dx) \pi(dy) P^{k-m}(y, dz) \\
 						&= \pi(dy) \int_{\mathcal{X}}  P^{k-m}(y, dz) P^m(z, dx)
 					\end{align*}
-					again by the Chapman-Kolmogorov equation, we get that
+					again by Chapman-Kolmogorov equation, we get that
 					\begin{align*}
 						&= \pi(dy) \cdot P^k(y, dx).
 					\end{align*}
@@ -407,9 +407,9 @@
 \section{Proof sketch of Theorem 4.1 for correlated samples}
 	Chatterjee presented the complete proof of Theorem 4.1 in \cite{chatterjee2020sourav}, where the samples drawn from $(X, Y)$ are i.i.d.
 	In our case of MCMC, for the estimation of Chatterjee's correlation, we have correlated but identically distributed draws due to stationarity.
-	To use this new autocorrelation function, we need to estimate it first, and for that we need the estimator to be consistent in our case as well.
-	Our aim is to prove that the estimator is consistent even in the stationary Markov chain case.
-	We believe that the convergence does happen, but were not able to prove it completely in this project, and it is left as future work.
+	To use this new autocorrelation function, we need to estimate it first, and for that, we need the estimator to be consistent in our case.
+	We aim to prove that the estimator is consistent even in the stationary Markov chain case.
+	We believe that the convergence does happen but could not prove it completely in this project, and it is left as future work.
 
 	\begin{theorem}
 		Let $X_1, X_2, \dots$ be a stationary time-homogeneous Markov chain with stationary distribution $\mu$.
@@ -470,9 +470,10 @@
 		\label{fig:mh_acf}
 	\end{figure}
 
-	In both the cases, we can see that the rate of convergence of ACF is faster for the Chatterjee's correlation.
-	If in future we can find a relation between variance of Markov chain CLT and Chatterjee's autocorrelation,
-	then this faster convergence rate might make it a better alternative in estimating the variance.
+    In both cases, we can see that ACF's convergence rate is faster than Chatterjee's correlation.
+    If in future, we can find a relation between the variance of Markov chain CLT and Chatterjee's autocorrelation,
+    then this faster convergence rate might make it a better alternative for estimating the variance.
+
 %Bibliography
 \bibliographystyle{unsrt}
 \bibliography{references}
