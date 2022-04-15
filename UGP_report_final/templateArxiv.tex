@@ -372,20 +372,26 @@
 			\begin{equation*}
 				\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x] = \int_t^{\infty} P^{n-1}(x, dy)
 			\end{equation*}
-			For an Ergodic Markov chain, under the Total Variation Norm, we know that
+			For an Ergodic Markov chain, under the Total Variation Norm, we know that for every initial distribution $\lambda$
 			\begin{equation*}
-				||P^k(x, \cdot) - F(\cdot)|| \rightarrow 0 \text{ as } k \rightarrow \infty
+				\lim_{k\rightarrow\infty}||\lambda P^k - F|| = 0.
 			\end{equation*}
+			Consequently, for all $x \in \mathbb{R}$,
+			\begin{equation*}
+				\lim_{k\rightarrow\infty}||P^k(x, \cdot) - F(\cdot)|| = 0.
+			\end{equation*}
+			So, define $$G_{k, x}(t) := \int_{-\infty}^{t} P^{k}(x, dy)$$
+			i.e. the cdf of $P^k(x, \cdot)$. By ergodicity, we get that
+			$$G_{k, x}(t) \xrightarrow{d} F(t)$$
 			This implies
 			\begin{align*}
-				\lim_{n \rightarrow \infty} \int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t) &= \lim_{n \rightarrow \infty} \int \Var{\int_t^{\infty} P^{n-1}(x, dy)} d\pi(t)\\
-				&= \int \Var{\int_t^{\infty} \lim_{n \rightarrow \infty} P^{n-1}(x, dy)} d\pi(t)\\
-				&= \int \Var\left[\int_t^{\infty} F(dy)\right] d\pi(t)\\
-				&= \int \Var[1-F(t)] d\pi(t)\\
+				\lim_{n \rightarrow \infty} \int \Var\left[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]\right] d\pi(t) &= \lim_{n \rightarrow \infty} \int \Var\left[\int_t^{\infty} P^{n-1}(x, dy)\right] d\pi(t)\\
+				&= \lim_{n \rightarrow \infty} \int \Var\left[1-G_{n-1, x}\right] d\pi(t)\\
+				&= \int \Var\left[\lim_{n \rightarrow \infty}(1-G_{n-1, x})\right] d\pi(t)\\
+				&= \int \Var\left[1-F(t)\right] d\pi(t)\\
 				&= \int 0 \cdot d\pi(t)\\
 				&= 0
 			\end{align*}
-			under the Total Variation Norm.
 		\end{proof}
 	\end{theorem}
 
@@ -404,7 +410,6 @@
 	\begin{proof}
 
 	\end{proof}
-
 
 \section{Some Simulations}
 

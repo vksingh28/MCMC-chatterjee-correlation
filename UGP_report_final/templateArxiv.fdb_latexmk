@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex templateArxiv"] 1649979639 "templateArxiv.aux" "templateArxiv.bbl" "templateArxiv" 1649980450
+["bibtex templateArxiv"] 1649981410 "templateArxiv.aux" "templateArxiv.bbl" "templateArxiv" 1649981591
   "/usr/local/texlive/2021/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
   "references.bib" 1649936171 4002 704ab83e9f23d7a19a525f8c247f7f11 ""
-  "templateArxiv.aux" 1649980408 2148 d91994ec9451bfd9a7fad1e3c4f63fd2 "pdflatex"
+  "templateArxiv.aux" 1649981590 2148 d91994ec9451bfd9a7fad1e3c4f63fd2 "pdflatex"
   (generated)
   "templateArxiv.bbl"
   "templateArxiv.blg"
-["pdflatex"] 1649980407 "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.tex" "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.pdf" "templateArxiv" 1649980450
-  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.aux" 1649980408 2148 d91994ec9451bfd9a7fad1e3c4f63fd2 ""
-  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.tex" 1649980449 21980 20e4c841616f6f4816a041a131f480a8 ""
+["pdflatex"] 1649981589 "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.tex" "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.pdf" "templateArxiv" 1649981591
+  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.aux" 1649981590 2148 d91994ec9451bfd9a7fad1e3c4f63fd2 ""
+  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.tex" 1649981589 22321 108c177ea07d55b5c2db534f6ec67ecc ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -135,14 +135,14 @@
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1644839687 2724743 b0f17e20478ce7ba88e496c3685ed3b9 ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
   "PRIMEarxiv.sty" 1649964806 7997 92457f98e98c2c92564d76bf376fa033 ""
-  "templateArxiv.aux" 1649980408 2148 d91994ec9451bfd9a7fad1e3c4f63fd2 "pdflatex"
-  "templateArxiv.bbl" 1649979639 49 0eba253fc001332e731e8aba3f23127b "bibtex templateArxiv"
-  "templateArxiv.out" 1649980408 2009 63a304b107fb99850cfa6700a7e7ae55 "pdflatex"
-  "templateArxiv.tex" 1649980449 21980 20e4c841616f6f4816a041a131f480a8 ""
+  "templateArxiv.aux" 1649981590 2148 d91994ec9451bfd9a7fad1e3c4f63fd2 "pdflatex"
+  "templateArxiv.bbl" 1649981410 49 0eba253fc001332e731e8aba3f23127b "bibtex templateArxiv"
+  "templateArxiv.out" 1649981590 2009 63a304b107fb99850cfa6700a7e7ae55 "pdflatex"
+  "templateArxiv.tex" 1649981589 22321 108c177ea07d55b5c2db534f6ec67ecc ""
   (generated)
-  "templateArxiv.pdf"
-  "templateArxiv.aux"
-  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.pdf"
   "templateArxiv.log"
+  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.pdf"
+  "templateArxiv.aux"
   "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_report_final/templateArxiv.log"
+  "templateArxiv.pdf"
   "templateArxiv.out"
