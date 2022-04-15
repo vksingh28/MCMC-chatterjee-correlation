@@ -5,13 +5,24 @@ reps = 1e5
 k = 1e3
 # AR(1)
 ar.x = numeric(reps)
-eps = rexp(reps, rate = .01);
+eps = rnorm(reps, mean = 0, sd = 1)
 ar.x[1] = 0
 rho = 0.8
 for(t in 2:reps) {
 	ar.x[t] = rho*ar.x[t-1] + eps[t]
 }
-
+acf_chatterjee = numeric(51)
+for(i in 0:50){
+  acf_chatterjee[i+1] = xicor(head(ar.x, reps-i), tail(ar.x, reps-i))
+}
+jpeg('acf_ar.jpg')
+plot(acf(ar.x))
+dev.off()
+jpeg('acf_ar_chatterjee.jpg')
+plot(0:50, acf_chatterjee, ylim=c(0, 1), cex=0.01, xlab="Lag", ylab="ACF_Chatterjee", title="AR(1)")
+segments(x0=0:50, y0=0, x1=0:50, y1=acf_chatterjee)
+abline(h=0.01, lty=2, col='blue')
+dev.off()
 xicor(head(ar.x, reps-k), tail(ar.x, reps-k))
 xicor(tail(ar.x, reps-k), head(ar.x, reps-k))
 # Comments: xicor is symmetric. I believe the reason why its not coming out to be same is low value of rho and probably the use of correlated samples (not iid) to calculate xicor.
@@ -34,7 +45,19 @@ for(i in 2:reps){
   A <- min(1, target(proposed_x)/target(current_x))
   ifelse(uniforms[i] < A, mh.x[i] <- proposed_x, mh.x[i] <- current_x)
 }
+acf_chatterjee_mh = numeric(51)
+for(i in 0:50){
+  acf_chatterjee_mh[i+1] = xicor(head(ar.x, reps-i), tail(ar.x, reps-i))
+}
 
+jpeg('acf_mh.jpg')
+plot(acf(mh.x))
+dev.off()
+jpeg('acf_mh_chatterjee.jpg')
+plot(0:50, acf_chatterjee_mh, ylim=c(0, 1), cex=0.01, xlab="Lag", ylab="ACF_Chatterjee")
+segments(x0=0:50, y0=0, x1=0:50, y1=acf_chatterjee_mh)
+abline(h=0.01, lty=2, col='blue')
+dev.off()
 xicor(head(mh.x, reps-k), tail(mh.x, reps-k))
 xicor(tail(mh.x, reps-k), head(mh.x, reps-k))
 # Comment: it seems symmetric in this case

@@ -21,6 +21,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{enumitem}
+\usepackage{float}
 % graphics
 \graphicspath{{media/}}     % organize your images and other figures under media/ folder
 
@@ -62,15 +63,15 @@
 
 \author{
   Vivek Kumar Singh \\
-  IITK \\
+  Department of Mathematics and Statistics \\
   Indian Institute of Technology Kanpur \\
   % City\\
   \texttt{\{vksingh\}@iitk.ac.in} \\
   %% examples of more authors
    \And
   Dootika Vats \\
- IITK \\
- Department of Mathematics and Statistics \\
+  Department of Mathematics and Statistics \\
+  Indian Institute of Technology Kanpur \\
  % City\\
  \texttt{\{dootika\}@iitk.ac.in}
   %% \AND
@@ -190,7 +191,7 @@
 	The aim of this project is to create a new autocorrelation function (ACF) using the Chatterjee's correlation coefficient, and study it's behaviour when applied to Markov chains.\\
 	Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with stationary distribution $\pi$.
 	We define the new lag-k ACF as follows
-	$$\gamma_{k, n}' = \xi(X_n, X_{n+k}).$$
+	$$\gamma_{k, n}' := \xi(X_n, X_{n+k}).$$
 
 	\begin{theorem}
 		Here we present a proof of a well known result about the Pearson Correlation Coefficient.
@@ -310,14 +311,14 @@
 		\begin{proof}
 			We have
 			\begin{equation*}
-				\xi(X_1, X_{n}) = \frac{\int \Var{\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]} d\pi(t)}{\int \Var{1_{\{X_{n} \geq t\}}} d\pi(t)}.
+				\xi(X_1, X_{n}) = \frac{\int \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t)}{\int \Var[1_{\{X_{n} \geq t\}}] d\pi(t)}.
 			\end{equation*}
 			The denominator is independent of $n$ as proven in [last to last theorem ref], so we only need to show that the numerator goes to 0 as $n \rightarrow \infty$.\\
 			\begin{lemma}
 				$$\lim_{n \rightarrow \infty} \int \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t) = \int \lim_{n \rightarrow \infty}\Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t)$$
 				\begin{proof}
 					Define $f_n(t) := \Var[\Pr(X_{n} \geq t | X_{1} = x)] \cdot \pi(t)$. \\
-					Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
+					It is easy to see that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
 					Now, as $f_n$ is a product of two bounded functions, it is also bounded.
 					Set
 					$$ C:= \sup_{n \in \mathbb{N}} \left(\sup_{t \in \mathbb{R}} \left(\Var[\Pr(X_{n} \geq t | X_{1} = x)]\right)\right)$$
@@ -349,7 +350,7 @@
 						$$\lim_{n \rightarrow \infty} \int \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t) dt = \int \lim_{n \rightarrow \infty}\Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)dt.$$
 						\begin{proof}
 							Define $f_n(t) := \Pr(X_{n} \geq t | X_{1} = x)^n \cdot \pi(t)$. \\
-							Assume for the time being that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
+							It is easy to see that $f_n$ is measurable, $\int_{-\infty}^{\infty} f_n < \infty$ and $f_n$ is continuous.\\
 							Now, as $f_n$ is a product of two bounded functions, it is also bounded. \\
 							Now,
 							$$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} \pi(t)dt = 1 < \infty.$$
@@ -411,14 +412,48 @@
 
 	\end{proof}
 
-\section{Some Simulations}
+\section{Simulations}
+	Assuming theorem [], we've presented below two sets of ACF plots of two different Markov chains.
+	On the left column, we have Pearson's ACF plot, and on the right we have Chatterjee's ACF plot.
 
+	First, we have the AR(1) process with $\rho = 0.8$.
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.4\linewidth}
+			\includegraphics[width=\linewidth]{acf_ar.jpg}
+			\caption{Classical ACF}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\linewidth}
+			\includegraphics[width=\linewidth]{acf_ar_chatterjee.jpg}
+			\caption{Chatterjee's ACF}
+		\end{subfigure}
+		\caption{AR(1) Process with $\rho = 0.8$}
+		\label{fig:ar_acf}
+	\end{figure}
 
+	Next, we have the Metropolis-Hastings algorithm with initial distribution as Exp(0.01) and target distribution $\mathcal{N}(0, 1)$
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.4\linewidth}
+			\includegraphics[width=\linewidth]{acf_mh.jpg}
+			\caption{Classical ACF}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\linewidth}
+			\includegraphics[width=\linewidth]{acf_mh_chatterjee.jpg}
+			\caption{Chatterjee's ACF}
+		\end{subfigure}
+		\caption{Metropolis Hastings algorithm with intial distribution Exp(0.01) and target distribution $\mathcal{N}(0, 1)$}
+		\label{fig:mh_acf}
+	\end{figure}
+
+	In both the cases, we can see that the rate of convergence of ACF is faster for the Chatterjee's correlation.
+	If in future we can find a relation between variance of Markov chain CLT and Chatterjee's autocorrelation,
+	then this faster convergence rate might make it a better alternative in estimating the variance.
 %Bibliography
 \bibliographystyle{unsrt}
 \bibliography{references}
 
 \section{Appendix}
-fjsdl
+
 
 \end{document}
