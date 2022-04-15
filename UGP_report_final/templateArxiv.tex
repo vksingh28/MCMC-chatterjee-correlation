@@ -63,6 +63,7 @@
 
 \author{
   Vivek Kumar Singh \\
+  Bachelor of Science \\
   Department of Mathematics and Statistics \\
   Indian Institute of Technology Kanpur \\
   % City\\
@@ -70,6 +71,7 @@
   %% examples of more authors
    \And
   Dootika Vats \\
+  Associate Professor \\
   Department of Mathematics and Statistics \\
   Indian Institute of Technology Kanpur \\
  % City\\
@@ -94,17 +96,23 @@
 
 \begin{document}
 \maketitle
-
+\begin{abstract}
+    Markov chain Monte Carlo (MCMC) algorithms are used to estimate features of interest of a distribution.
+    The ACF used for assessing the quality of the produced chain and calculating the variance of Markov chain CLT is defined using the Pearson correlation.
+    In his recent paper, Chatterjee proposed a coefficient that solves some of the Pearson correlation's problems.
+    We present a new ACF defined using this coefficient and examine its behaviour on stationary Markov chains.
+    We proved some results and sketched out a path for proving the consistency of the estimator of this ACF estimated using correlated draws.
+\end{abstract}
 \section{Introduction}
 
 	Markov chain Monte Carlo (MCMC) methods are a class of algorithms used for sampling from complicated probability distributions.
 	They are often required for parameter estimation in the statistical models encountered in real-world applications.
-	%add more shit about mcmc
+
 	If $X_1, X_2, \dots$ is a Markov chain,
 	then the lag-k autocorrelation is defined as
 	$$\gamma_k = \rho(X_1, X_{1+k}),$$
 	where $\rho$ is the Pearson's correlation coefficent (See Section 3).
-	The autocorrelation function is used for assessing the quality of the Markov chain produced.
+	The autocorrelation function is used to measure the quality of the Markov chain produced.
 	Pearson's correlation used above is great at detecting monotone relations in data,
 	but doesn't perform well enough when applied to non-linear situations (say $\rho(X, \sin(X))$)
 
@@ -409,6 +417,22 @@
 	\end{theorem}
 	All the Lemmas and Corollaries are taken directly from the proof in the i.i.d. case given in \cite{chatterjee2020sourav}.
 	\begin{proof}
+		Throughout this proof, we will abbreviate $\xi_n(X, Y)$ as $\xi_n$ and $\xi(X, Y)$ as $\xi$.
+		For $t \in \mathbb{R}$ let $F(t) := \Pr(Y \leq t)$ and $G(t) := \Pr(Y \geq t)$. Let $\mu$ be the law of $Y$.
+		By the existence of regular conditional probabilities on regular Borel spaces, for each Borel set $A \subseteq \mathbb{R}$ there is a measurable map $x \mapsto \mu_x(A)$ from $\mathbb{R}$ into $[0, 1]$, such that
+		\begin{enumerate}
+			\item for any $A$, $\mu_X(A)$ is a version of $\Pr(Y \in A|X)$, and
+			\item with probability one, $\mu_X$ is a probability measure on $\mathbb{R}$.
+		\end{enumerate}
+		In the above sense, $\mu_x$ is the conditional law of $Y$ given $X = x$. For each $t$, let $G_x(t) := \mu_x([t, \infty))$, and define
+		$$Q := \int \Var(G_X(t))d\mu(t).$$
+		\begin{lemma}
+			Let $Q$ be as above. Then $Q = 0$ if and only if $X$ and $Y$ are independent.
+		\end{lemma}
+		\begin{corollary}
+
+		\end{corollary}
+		The proofs of Lemma 6.2 and Corollary 6.3 does not require any changes from the original proofs, and hence are omitted.
 
 	\end{proof}
 
