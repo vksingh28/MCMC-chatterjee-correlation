@@ -103,7 +103,7 @@
 	If $X_1, X_2, \dots$ is a Markov chain,
 	then the lag-k autocorrelation is defined as
 	$$\gamma_k = \rho(X_1, X_{1+k}),$$
-	where $\rho$ is the Pearson's correlation coefficent (See Section []).
+	where $\rho$ is the Pearson's correlation coefficent (See Section 3).
 	The autocorrelation function is used for assessing the quality of the Markov chain produced.
 	Pearson's correlation used above is great at detecting monotone relations in data,
 	but doesn't perform well enough when applied to non-linear situations (say $\rho(X, \sin(X))$)
@@ -112,16 +112,16 @@
 	(a) as simple as the Pearson correlation,
 	(b) is 0 if and only if the variables are independent and 1 if and only if one is a measurable function of the other, and
 	(c) has a simple asymptotic theory under the hypothesis of independence, like the Pearson correlation.
-	See Section [] for more on this.
+	See Section 4 for more on this.
 
 	The advantages of this new measure motivated us to define a new autocorrelation function using Chatterjee's correlation coefficient instead of Pearson's.
 	In order to use this in MCMC theory, two things were needed,\\
-	1. Some properties that are followed by the classical ACF should also hold for our version for Markov chains (See Section []).\\
-	2. As we do not have the luxury of i.i.d. draws, for which the consistency of the estimator of Chatterjee's correlation holds (See []),
-		we need to prove it for the case of MCMC samples we have (See Section []).\\
-	We proved three results for Chatterjee's correlation that are analogous to their Pearson counterpart (See Section []).
+	1. Some properties that are followed by the classical ACF should also hold for our version for Markov chains.\\
+	2. As we do not have the luxury of i.i.d. draws, for which the consistency of the estimator of Chatterjee's correlation holds (See [paper]),
+		we need to prove it for the case of MCMC samples we have.\\
+	We proved three results for Chatterjee's correlation that are analogous to their Pearson counterpart (See Section 5).
 	We also believe that the estimator for Chatterjee's correlation coefficient is consistent even when we are using correlated draws from a stationary Markov chain.
-	Some ideas are presented (See Section []) inspired by the proof of consistency in [] of the i.i.d. estimator on how one should go about it.
+	Some ideas are presented (See Section 6) inspired by the proof of consistency in [paper] of the i.i.d. estimator on how one should go about it.
 	We were not able to complete it in this project and is left as future work.
 
 \section{Markov chain Monte Carlo}
@@ -241,7 +241,7 @@
 			As both the numerator and denominator are independent of $n$, we can conclude that $\xi(X_n, X_{n+k})$ is independent of $n$.
 		\end{proof}
 	\end{theorem}
-	Because of Theorem [], we can safely denote this new ACF by $\gamma_k'$.
+	Because of Theorem 5.2, we can safely denote this new ACF by $\gamma_k'$.
 
 	Now, if the Central Limit Theorem holds for a Markov chain, the variance is as follows
 	$$\sigma_{\text{clt}}^2 = \sum_{k=-\infty}^{\infty} \gamma_k.$$
@@ -254,7 +254,7 @@
 	\begin{theorem}
 		$\xi(X_n, X_{n+k}) = \xi(X_{n+k}, X_n)$ for time reversal Markov chains for any $n, k \in \mathbb{N}$.
 		\begin{proof}
-			By [last theorem ref], we know that the denominator of $\xi(X_n, X_{n+k})$ is independent of both $n$ and $k$. So we only have to prove that the numerator is symmetric. \\
+			By Theorem 5.2, we know that the denominator of $\xi(X_n, X_{n+k})$ is independent of both $n$ and $k$. So we only have to prove that the numerator is symmetric. \\
 			We have to show that
 			\begin{equation*}
 				\int \Var [\Pr (X_{n+k} \geq t | X_n)] d\pi(t) = \int \Var [\Pr (X_n \geq t | X_{n+k})] d\pi(t).
@@ -296,7 +296,7 @@
 					\end{align*}
 				\end{proof}
 			\end{lemma}
-			By this \textbf{Lemma []}, it is clear that
+			By Lemma 5.4, it is clear that
 			\begin{equation*}
 				\Pr (X_{n+k} \geq t | X_n) = \Pr (X_n \geq t | X_{n+k}) \text{  } \forall t \in \mathbb{R}
 			\end{equation*}
@@ -313,7 +313,7 @@
 			\begin{equation*}
 				\xi(X_1, X_{n}) = \frac{\int \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t)}{\int \Var[1_{\{X_{n} \geq t\}}] d\pi(t)}.
 			\end{equation*}
-			The denominator is independent of $n$ as proven in [last to last theorem ref], so we only need to show that the numerator goes to 0 as $n \rightarrow \infty$.\\
+			The denominator is independent of $n$ as proven in Theorem 5.2, so we only need to show that the numerator goes to 0 as $n \rightarrow \infty$.\\
 			\begin{lemma}
 				$$\lim_{n \rightarrow \infty} \int \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t) = \int \lim_{n \rightarrow \infty}\Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] d\pi(t)$$
 				\begin{proof}
@@ -359,7 +359,7 @@
 							$$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int \left(\lim_{n \rightarrow \infty} f_n(t)\right) dt.$$
 						\end{proof}
 					\end{lemma}
-					Using the \textbf{Lemma 4} for $n = 1$ and $2$, we can take limit in both the terms inside, i.e.
+					Using Lemma 5.8 for $n = 1$ and $2$, we can take limit in both the terms inside, i.e.
 					\begin{align*}
 						\lim_{n \rightarrow \infty} \Var[\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x]] &= \lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)^2]\\
 						&- \left(\lim_{n \rightarrow \infty} \mathbb{E}[\Pr(X_{n} \geq t | X_{1} = x)]\right)^2\\
@@ -369,7 +369,7 @@
 					\end{align*}
 				\end{proof}
 			\end{lemma}
-			Now, by (2.4), we know that
+			Now we know that
 			\begin{equation*}
 				\mathbb{E}[1_{\{X_{n} \geq t\}}|X_1=x] = \int_t^{\infty} P^{n-1}(x, dy)
 			\end{equation*}
@@ -396,8 +396,8 @@
 		\end{proof}
 	\end{theorem}
 
-\section{Proof sketch of Theorem [] for correlated samples}
-	Chatterjee presented the complete proof of [] in [], where the samples drawn from $(X, Y)$ are i.i.d.
+\section{Proof sketch of Theorem 4.1 for correlated samples}
+	Chatterjee presented the complete proof of Theorem 4.1 in [paper], where the samples drawn from $(X, Y)$ are i.i.d.
 	In our case of MCMC, for the estimation of Chatterjee's correlation, we have correlated but identically distributed draws due to stationarity.
 	To use this new autocorrelation function, we need to estimate it first, and for that we need the estimator to be consistent in our case as well.
 	Our aim is to prove that the estimator is consistent even in the stationary Markov chain case.
@@ -407,13 +407,13 @@
 		Let $X_1, X_2, \dots$ be a stationary time-homogeneous Markov chain with stationary distribution $\mu$.
 		Then $\xi_n(X, Y)$ estimated using the draws from the Markov chain converge to $\xi(X, Y)$ as $n \rightarrow \infty$, where X, Y are any two time points in the chain.
 	\end{theorem}
-	All the Lemmas and Corollaries are taken directly from the proof in the i.i.d. case given in [].
+	All the Lemmas and Corollaries are taken directly from the proof in the i.i.d. case given in [paper].
 	\begin{proof}
 
 	\end{proof}
 
 \section{Simulations}
-	Assuming theorem [], we've presented below two sets of ACF plots of two different Markov chains.
+	Assuming Theorem 6.1, we've presented below two sets of ACF plots of two different Markov chains.
 	On the left column, we have Pearson's ACF plot, and on the right we have Chatterjee's ACF plot.
 
 	First, we have the AR(1) process with $\rho = 0.8$.
