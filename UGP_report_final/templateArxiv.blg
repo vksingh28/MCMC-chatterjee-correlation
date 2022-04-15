@@ -2,47 +2,48 @@ This is BibTeX, Version 0.99d (TeX Live 2021)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: templateArxiv.aux
 The style file: unsrt.bst
-I found no \citation commands---while reading file templateArxiv.aux
 Database file #1: references.bib
-You've used 0 entries,
+Warning--empty publisher in geyer2005charles
+Warning--empty publisher in mcmc2011handbook
+You've used 6 entries,
             1791 wiz_defined-function locations,
-            445 strings with 3534 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
+            470 strings with 4105 characters,
+and the built_in function-call counts, 907 in all, are:
+= -- 61
+> -- 45
 < -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 18
+- -- 12
+* -- 32
+:= -- 145
+add.period$ -- 15
+call.type$ -- 6
+change.case$ -- 3
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 8
+duplicate$ -- 45
+empty$ -- 112
+format.name$ -- 12
+if$ -- 206
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 6
+missing$ -- 6
+newline$ -- 30
+num.names$ -- 6
+pop$ -- 44
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1
+skip$ -- 19
 stack$ -- 0
 substring$ -- 0
-swap$ -- 0
+swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
-(There was 1 error message)
+warning$ -- 2
+while$ -- 6
+width$ -- 7
+write$ -- 54
+(There were 2 warnings)

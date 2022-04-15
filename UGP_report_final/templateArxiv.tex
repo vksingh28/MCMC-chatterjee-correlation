@@ -108,7 +108,7 @@
 	Pearson's correlation used above is great at detecting monotone relations in data,
 	but doesn't perform well enough when applied to non-linear situations (say $\rho(X, \sin(X))$)
 
-	Chatterjee proposed a new measure of dependence in [site paper], which is
+	Chatterjee proposed a new measure of dependence in \cite{chatterjee2020sourav}, which is
 	(a) as simple as the Pearson correlation,
 	(b) is 0 if and only if the variables are independent and 1 if and only if one is a measurable function of the other, and
 	(c) has a simple asymptotic theory under the hypothesis of independence, like the Pearson correlation.
@@ -117,23 +117,23 @@
 	The advantages of this new measure motivated us to define a new autocorrelation function using Chatterjee's correlation coefficient instead of Pearson's.
 	In order to use this in MCMC theory, two things were needed,\\
 	1. Some properties that are followed by the classical ACF should also hold for our version for Markov chains.\\
-	2. As we do not have the luxury of i.i.d. draws, for which the consistency of the estimator of Chatterjee's correlation holds (See [paper]),
+	2. As we do not have the luxury of i.i.d. draws, for which the consistency of the estimator of Chatterjee's correlation holds (See \cite{chatterjee2020sourav}),
 		we need to prove it for the case of MCMC samples we have.\\
 	We proved three results for Chatterjee's correlation that are analogous to their Pearson counterpart (See Section 5).
 	We also believe that the estimator for Chatterjee's correlation coefficient is consistent even when we are using correlated draws from a stationary Markov chain.
-	Some ideas are presented (See Section 6) inspired by the proof of consistency in [paper] of the i.i.d. estimator on how one should go about it.
+	Some ideas are presented (See Section 6) inspired by the proof of consistency in \cite{chatterjee2020sourav} of the i.i.d. estimator on how one should go about it.
 	We were not able to complete it in this project and is left as future work.
 
 \section{Markov chain Monte Carlo}
 	A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ taking values in an arbitrary general state space and having the Markov property,
-	i.e. the conditional distribution of $X_{n+1}$ given the past $X_1, \dots X_n$, depends only on the present state $X_n$.
+	i.e. the conditional distribution of $X_{n+1}$ given the past $X_1, \dots X_n$, depends only on the present state $X_n$. (\cite{vats2017multivariate})
 
 	A Markov chain can be specified by two things, the intital distribution and the transition probabilities.
 	The initial distribution is the marginal of $X_1$. By transition probabilities, we mean the conditional distribution of $X_{n+1}$ given $X_n$.
 	We always assume stationary transition probabilities, i.e. the conditional $X_{n+1}|X_n$ is independent of $n$.\\
 	A Markov chain is said to be stationary if the distribution of $X_n$ is independent of $n$,
 	and ergodic if it converges to the invariant distribution regardless of the choice of the initial distribution.\\
-	A stationary Markov chain is time-reversible w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable.
+	A stationary Markov chain is time-reversible w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable. (\cite{geyer2005charles}, \cite{mcmc2011handbook})
 
 \section{Pearson's Correlation Coefficient}
 	$\textbf{Pearson correlation coefficient}$ measures the linear correlation of two sets of data.
@@ -154,7 +154,7 @@
 		\end{enumerate}
 
 \section{Chatterjee's Correlation Coefficient}
-	In order to solve these problems, Chatterjee came up with a new correlation coefficient which overcomes these drawbacks and also has a consistent estimator which is computationally efficient.\\
+	In order to solve these problems, Chatterjee came up with a new correlation coefficient (\cite{chatterjee2020sourav}, \cite{chatterjee2021mona}) which overcomes these drawbacks and also has a consistent estimator which is computationally efficient.\\
 	Chatterjee's correlation $\xi$ is defined as
 	$$\xi(X, Y) = \frac{\int Var(\mathbb{E}(1_{\{Y \geq t\}}|X)) d\mu(t)}{\int Var(1_{\{Y \geq t\}}) d\mu(t)},$$
 	where $X, Y$ are any sets of random variables.
@@ -175,7 +175,7 @@
 		\begin{theorem}
 			If $Y$ is not almost surely a constant, then as $n \rightarrow \infty$, $\xi_n(X, Y)$ converges almost surely to $\xi(X, Y)$, where $\mu$ is the pdf of $Y$.
 		\end{theorem}
-		This [theorem] proves that $\xi_n$ is a consistent estimator of $\xi$. Proof is given in [og paper].
+		Theorem 4.1 proves that $\xi_n$ is a consistent estimator of $\xi$. Proof is given in \cite{chatterjee2020sourav}.
 
 	\subsection{Properties}
 	Some properties of this new measure of dependence are as follows
@@ -278,7 +278,7 @@
 					For $k = 1$, it is true by definition of reversibility of Markov chains.\\
 					Assume that it is true for all $1 \leq m < k$.
 					We want to prove it for $k$.\\
-					By the Chapman-Kolmogorov equation, we have
+					By the Chapman-Kolmogorov equation (\cite{mcmc2011handbook}), we have
 					\begin{align*}
 						\pi(dx) P^k(x, dy) &= \pi(dx) \int_{\mathcal{X}} P^m(x, dz)\cdot P^{k-m}(z, dy)\\
 						&= \int_{\mathcal{X}} \pi(dx) P^m(x, dz) P^{k-m}(z, dy)
@@ -325,7 +325,7 @@
 					then
 					$$\int_{-\infty}^{\infty} f_n(t)dt \leq \int_{-\infty}^{\infty} C\cdot\pi(t)dt = C < \infty$$
 					As $f_n$ is dominated by $g$ (where $g(t) := C\cdot\pi(t) \forall t \in \mathbb{R})$, \\
-					by Lebesgue's Dominated Convergence Theorem,
+					by Lebesgue's Dominated Convergence Theorem (\cite{kl2001chung}),
 					$$\lim_{n \rightarrow \infty} \int f_n(t) dt = \int \left(\lim_{n \rightarrow \infty} f_n(t)\right) dt.$$
 				\end{proof}
 			\end{lemma}
@@ -397,7 +397,7 @@
 	\end{theorem}
 
 \section{Proof sketch of Theorem 4.1 for correlated samples}
-	Chatterjee presented the complete proof of Theorem 4.1 in [paper], where the samples drawn from $(X, Y)$ are i.i.d.
+	Chatterjee presented the complete proof of Theorem 4.1 in \cite{chatterjee2020sourav}, where the samples drawn from $(X, Y)$ are i.i.d.
 	In our case of MCMC, for the estimation of Chatterjee's correlation, we have correlated but identically distributed draws due to stationarity.
 	To use this new autocorrelation function, we need to estimate it first, and for that we need the estimator to be consistent in our case as well.
 	Our aim is to prove that the estimator is consistent even in the stationary Markov chain case.
@@ -407,7 +407,7 @@
 		Let $X_1, X_2, \dots$ be a stationary time-homogeneous Markov chain with stationary distribution $\mu$.
 		Then $\xi_n(X, Y)$ estimated using the draws from the Markov chain converge to $\xi(X, Y)$ as $n \rightarrow \infty$, where X, Y are any two time points in the chain.
 	\end{theorem}
-	All the Lemmas and Corollaries are taken directly from the proof in the i.i.d. case given in [paper].
+	All the Lemmas and Corollaries are taken directly from the proof in the i.i.d. case given in \cite{chatterjee2020sourav}.
 	\begin{proof}
 
 	\end{proof}
@@ -452,8 +452,6 @@
 %Bibliography
 \bibliographystyle{unsrt}
 \bibliography{references}
-
-\section{Appendix}
 
 
 \end{document}

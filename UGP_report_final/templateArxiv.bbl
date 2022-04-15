@@ -1,3 +1,30 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{chatterjee2020sourav}
+Sourav Chatterjee.
+\newblock A new coefficient of correlation, 2020.
+
+\bibitem{vats2017multivariate}
+Dootika Vats, James~M. Flegal, and Galin~L. Jones.
+\newblock Multivariate output analysis for markov chain monte carlo, 2017.
+
+\bibitem{geyer2005charles}
+Charles~J. Geyer.
+\newblock {\em Markov Chain Monte Carlo Lecture Notes}.
+\newblock 2005.
+
+\bibitem{mcmc2011handbook}
+Steve Brooks, Andrew Gelman, Galin~L. Jones, and Xiao-Li Meng.
+\newblock {\em Handbook of Markov Chain Monte Carlo}.
+\newblock 2011.
+
+\bibitem{chatterjee2021mona}
+Mona Azadkia and Sourav Chatterjee.
+\newblock A simple measure of conditional dependence, 2021.
+
+\bibitem{kl2001chung}
+Kai~Lai Chung.
+\newblock {\em A Course In Probability Theory}.
+\newblock Academic Press, 2001.
 
 \end{thebibliography}
