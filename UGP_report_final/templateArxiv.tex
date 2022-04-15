@@ -132,6 +132,7 @@
 	Some ideas are presented (See Section 6) inspired by the proof of consistency in \cite{chatterjee2020sourav} of the i.i.d. estimator on how one should go about it.
 	We were not able to complete it in this project and is left as future work.
 
+\newpage
 \section{Markov chain Monte Carlo}
 	A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ taking values in an arbitrary general state space and having the Markov property,
 	i.e. the conditional distribution of $X_{n+1}$ given the past $X_1, \dots X_n$, depends only on the present state $X_n$ (\cite{vats2017multivariate}).
@@ -216,7 +217,7 @@
 	\end{theorem}
 	This theorem is important as it allows us to estimate the ACF without drawing multiple Markov chains.
 	This suggests that the same property should also hold for $\gamma_{k, n}'$, proved in the next theorem.
-
+	\newpage
 	\begin{theorem}
 		$\xi(X_n, X_{n+k})$ is independent of $n$, where $n$ and $k$ are in $\mathbb{N}$.
 		\begin{proof}
@@ -417,22 +418,33 @@
 	\end{theorem}
 	All the Lemmas and Corollaries are taken directly from the proof in the i.i.d. case given in \cite{chatterjee2020sourav}.
 	\begin{proof}
-		Throughout this proof, we will abbreviate $\xi_n(X, Y)$ as $\xi_n$ and $\xi(X, Y)$ as $\xi$.
-		For $t \in \mathbb{R}$ let $F(t) := \Pr(Y \leq t)$ and $G(t) := \Pr(Y \geq t)$. Let $\mu$ be the law of $Y$.
-		By the existence of regular conditional probabilities on regular Borel spaces, for each Borel set $A \subseteq \mathbb{R}$ there is a measurable map $x \mapsto \mu_x(A)$ from $\mathbb{R}$ into $[0, 1]$, such that
-		\begin{enumerate}
-			\item for any $A$, $\mu_X(A)$ is a version of $\Pr(Y \in A|X)$, and
-			\item with probability one, $\mu_X$ is a probability measure on $\mathbb{R}$.
-		\end{enumerate}
-		In the above sense, $\mu_x$ is the conditional law of $Y$ given $X = x$. For each $t$, let $G_x(t) := \mu_x([t, \infty))$, and define
-		$$Q := \int \Var(G_X(t))d\mu(t).$$
-		\begin{lemma}
-			Let $Q$ be as above. Then $Q = 0$ if and only if $X$ and $Y$ are independent.
-		\end{lemma}
-		\begin{corollary}
+		Lemma 9.1 and Corollary 9.2 of \cite{chatterjee2020sourav} follow directly without any changes.
 
-		\end{corollary}
-		The proofs of Lemma 6.2 and Corollary 6.3 does not require any changes from the original proofs, and hence are omitted.
+        We could not prove Lemma 9.3, but we believe that it can be proven and is left for the future.
+
+        We proved Lemma 9.4 in the case of stationary Markov chain. The only place where the i.i.d. property of $\{X_n\}$ was used is to show that
+		$$\frac{1}{n}\sum_{j = 1}^{n}\mathbb{E}(f(X_j)) = \mathbb{E}(f(X_1))$$
+		This statement is also true in the case of stationary Markov chains, and hence we are done.
+
+        Lemma 9.5 is a special case of Lusin's Theorem (See \cite{chatterjee2020sourav}).
+
+        Lemma 9.6 requires Lemma 9.3, 9.4 and 9.5. If we can prove Lemma 9.3, we are done.
+
+        Lemma 9.7 is a standard probability result.
+
+        Proof of Lemma 9.8 requires i.i.d. samples and Lemma 9.7. We were not able to prove Lemma 9.8 for our case.
+
+        We get Corollary 9.9 by adding the results of Lemma 9.6 and Lemma 9.8.
+
+        Lemma 9.10 requires Corollary 9.9 and the Glivenko-Cantelli theorem. As we have an ergodic Markov chain version of the Glivenko-Cantelli version,
+        we are done after proving Corollary 9.9.
+
+        Proof of Lemma 9.11 also does not require any modifications from the one given in \cite{chatterjee2020sourav}.
+
+        Corollary 9.12 follows directly from Lemma 9.10 and Lemma 9.11.
+
+        The proof of the main theorem requires the Glivenko-Cantelli theorem, Corollary 9.2 and Corollary 9.12.
+        The future work is to prove Lemma 9.3 and Lemma 9.8, and we will be done.
 
 	\end{proof}
 
