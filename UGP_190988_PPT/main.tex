@@ -61,11 +61,39 @@
 \tableofcontents
 \end{frame}
 
-\section{Introduction}
-\begin{frame}{Introduction}
+\section{Markov chain Monte Carlo}
+\begin{frame}
+    \frametitle{Markov Chain Monte Carlo}
+    \begin{itemize}
+        \item A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ such that the next state of the process depends solely on the present state, i.e.
+            $$\Pr(X_n | X_1, \dots, X_{n-1}) = \Pr(X_n | X_{n-1}).$$
+            \vspace{2em}
+        \item A Markov chain can be specified by two things
+            \begin{enumerate}
+                \item The initial distribution, i.e. the marginal of $X_1$.
+                \item The transition probabilites, i.e. the conditional of $X_{n+1}|X_n$
+            \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Markov chain Monte Carlo}
+    \begin{itemize}
+        \item A Markov chain is said to be \textbf{stationary} if the marginal of $X_n$ is independent of $n$. This invariant distribution is called the stationary distribution.
+        \vspace{2em}
+        \item A Markov chain is \textbf{ergodic} if the distribution of $X_n$ converges to the invariant distribution.
+        \vspace{2em}
+        \item A stationary Markov chain is \textbf{time-reversible} w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable.
+    \end{itemize}
 
 \end{frame}
+
 \section{Pearson's Correlation Coefficient}
+\begin{frame}
+    \frametitle{Pearson's Correlation Coefficient}
+
+
+\end{frame}
 
 \section{Chatterjee's Correlation Coefficient}
 
