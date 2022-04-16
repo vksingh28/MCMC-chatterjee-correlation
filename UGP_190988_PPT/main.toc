@@ -1,5 +1,6 @@
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@sectionintoc {2}{Literature Review}{4}{0}{2}
-\beamer@sectionintoc {3}{Methodology}{4}{0}{3}
-\beamer@sectionintoc {4}{Experiment}{4}{0}{4}
-\beamer@sectionintoc {5}{Conclusion}{4}{0}{5}
+\beamer@sectionintoc {2}{Pearson's Correlation Coefficient}{4}{0}{2}
+\beamer@sectionintoc {3}{Chatterjee's Correlation Coefficient}{4}{0}{3}
+\beamer@sectionintoc {4}{Chatterjee's Autocorrelation Coefficient}{4}{0}{4}
+\beamer@sectionintoc {5}{Sketch of proof of consistency}{4}{0}{5}
+\beamer@sectionintoc {6}{Simulations}{4}{0}{6}
