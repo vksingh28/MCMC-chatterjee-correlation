@@ -68,7 +68,6 @@
         A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ such that the next state of the process depends solely on the present state, i.e.
             $$\Pr(X_{n+1} | X_1, \dots, X_{n}) = \Pr(X_{n+1} | X_{n}).$$
     \end{definition}
-    \vspace{2em}
     \begin{itemize}
         \item A Markov chain can be specified by two things
             \begin{enumerate}
@@ -76,6 +75,13 @@
                 \item The transition probabilites, i.e. the conditional distribution of $X_{n+1}|X_n$
             \end{enumerate}
     \end{itemize}
+    \begin{definition}
+        A Markov transition kernel is a map $P:\mathbb{R} \times \mathcal{B}(\mathbb{R}) \rightarrow [0, 1]$ such that
+        \begin{itemize}
+            \item for all $A\in\mathcal{B}(\mathbb{R})$, $P(., A)$ is a measurable function of $R$.
+            \item for all $x\in\mathbb{R}, P(x, .)$ is a probability measure of $\mathcal{B}(\mathbb{R})$.
+        \end{itemize}
+    \end{definition}
 \end{frame}
 
 \begin{frame}
@@ -87,7 +93,9 @@
         A Markov chain is \textbf{ergodic} if the distribution of $X_n$ converges to the invariant distribution.
     \end{definition}
     \begin{definition}
-        A stationary Markov chain is \textbf{time-reversible} w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable.
+        The Markov transition kernel $P$ is $F$-symmetric if
+        $$F(dx)P(x, dy) = F(dy)P(y, dx).$$
+        This equation is often called the \textbf{detailed balance}, and the phenomenon is called $F$-reversibility
     \end{definition}
 \end{frame}
 
@@ -109,9 +117,9 @@
 \end{frame}
 \begin{frame}
     \frametitle{Problems with Pearson Correlation}
+    There are some problems with the Pearson Correlation.
+    \vspace{2em}
     \begin{itemize}
-        \item There are some problems with the Pearson Correlation.
-        \vspace{2em}
         \item We would like the correlation to be close to its maximum value iff one variable is a function of the other.
         In Pearson's case, it is equal to $\pm 1$ iff the variables are linearly dependent.
         \vspace{2em}
