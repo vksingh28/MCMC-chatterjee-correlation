@@ -1604,10 +1604,7 @@ INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_19098
 INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/iitk_logo.jpg
 INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/iitk_logo.jpg
 INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/iitk_logo.jpg
-INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.bbl
-INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.bbl
-INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.bbl
-INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.bbl
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmss17.tfm
 INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/iitk_logo.jpg
 INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/iitk_logo.jpg
 INPUT /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/iitk_logo.jpg
@@ -1624,6 +1621,7 @@ INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.p
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb
+INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb
