@@ -124,7 +124,7 @@
 \begin{frame}
     \frametitle{Chatterjee's Correlation Coefficient}
     \begin{itemize}
-        \item In order to solve these problems, Chatterjee came up with a new measure of dependence in \cite{}.
+        \item In order to solve these problems, Chatterjee came up with a new measure of dependence in \cite{chatterjee2020sourav}.
         It overcomes the above mentioned drawbacks, and has a computationally efficient consistent estimator.
     \end{itemize}
     \vspace{2em}
@@ -157,9 +157,81 @@
     \end{itemize}
 \end{frame}
 
-\section{Chatterjee's Autocorrelation Coefficient}
+\section{Chatterjee's Autocorrelation Function}
+\begin{frame}
+    \frametitle{Chatterjee's Autocorrelation Function}
+    \begin{itemize}
+        \item We present a new autocorrelation function (ACF) using Chatterjee's correlation coefficient.
+    \end{itemize}
+    \vspace{2em}
+    \begin{definition}
+        Let $X_1, X_2, \dots$ be a stationary, time homogeneous Markov chain with stationary distribution $\pi$.
+        We define the new lag-k ACF as follows
+        $$\gamma_{k, n}' := \xi(X_n, X_{n+k}).$$
+    \end{definition}
 
-\section{Sketch of proof of consistency}
+\end{frame}
+
+\begin{frame}
+    \frametitle{$\gamma_{k, n}'$ is independent of $n$}
+    \vspace{1em}
+    \begin{theorem}
+        $\gamma_k = \text{Cov}(X_n, X_{n+k}) \text{ is independent of } n.$
+    \end{theorem}
+    \vspace{2em}
+    \begin{theorem}
+        $\gamma_{k, n}' = \xi(X_n, X_{n+k})$ is independent of $n$, where $n$ and $k$ are in $\mathbb{N}$.
+    \end{theorem}
+    \vspace{2em}
+    \begin{itemize}
+        \item From now on, we'll denote $\gamma_{k, n}'$ by $\gamma_{k}'$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Symmetricity of $\gamma_k'$}
+    \vspace{5.5em}
+    \begin{theorem}
+        $\xi(X_n, X_{n+k}) = \xi(X_{n+k}, X_n)$ for time reversal Markov chains for any $n, k \in \mathbb{N}$.
+    \end{theorem}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Convergence of $\gamma_k'$}
+    \vspace{6em}
+    \begin{theorem}
+        $\lim_{n \rightarrow \infty} \xi(X_1, X_{n}) = 0$ for an Ergodic Markov chain.
+    \end{theorem}
+\end{frame}
+
+
+\section{Proof of consistency of estimator}
+\begin{frame}
+    \frametitle{Proof of consistency of estimator}
+    \begin{itemize}
+        \item Chatterjee presented the proof of consistency of the estimator in \cite{chatterjee2020sourav}, where the samples drawn from $(X, Y)$ are i.i.d.
+        \vspace{2em}
+        \item In our case of stationary Markov chains, we have correlated but identically distributed draws.
+        \vspace{2em}
+        \item We aim to prove the consistency of the estimator for our case as well.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Proof of consistency of estimator}
+    \begin{theorem}
+        Let $X_1, X_2, \dots$ be a stationary time-homogeneous Markov chain with stationary distribution $\mu$.
+		Then $\xi_n(X, Y)$ estimated using the draws from the Markov chain converge to $\xi(X, Y)$ as $n \rightarrow \infty$, where X, Y are any two time points in the chain.
+    \end{theorem}
+    \vspace{2em}
+    \begin{itemize}
+        \item We presented some ideas and a pathway for proving it but could not complete it and is left as future work.
+    \end{itemize}
+
+
+
+\end{frame}
 
 \section{Simulations}
 \begin{frame}
