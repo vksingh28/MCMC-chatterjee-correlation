@@ -1,6 +1,6 @@
 \beamer@sectionintoc {1}{Markov chain Monte Carlo}{3}{0}{1}
 \beamer@sectionintoc {2}{Pearson's Correlation Coefficient}{5}{0}{2}
-\beamer@sectionintoc {3}{Chatterjee's Correlation Coefficient}{6}{0}{3}
-\beamer@sectionintoc {4}{Chatterjee's Autocorrelation Coefficient}{6}{0}{4}
-\beamer@sectionintoc {5}{Sketch of proof of consistency}{6}{0}{5}
-\beamer@sectionintoc {6}{Simulations}{6}{0}{6}
+\beamer@sectionintoc {3}{Chatterjee's Correlation Coefficient}{7}{0}{3}
+\beamer@sectionintoc {4}{Chatterjee's Autocorrelation Coefficient}{10}{0}{4}
+\beamer@sectionintoc {5}{Sketch of proof of consistency}{10}{0}{5}
+\beamer@sectionintoc {6}{Simulations}{10}{0}{6}

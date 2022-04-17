@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.14)  17 APR 2022 02:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.2.14)  17 APR 2022 06:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -926,48 +926,110 @@ Package pdftex.def Info: iitk_logo.jpg  used on input line 62.
  [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 79.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 77.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 79.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
 File: iitk_logo.jpg Graphic file (type jpg)
 <use iitk_logo.jpg>
-Package pdftex.def Info: iitk_logo.jpg  used on input line 77.
+Package pdftex.def Info: iitk_logo.jpg  used on input line 79.
 (pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
  [3
 
 ]
 File: iitk_logo.jpg Graphic file (type jpg)
 <use iitk_logo.jpg>
-Package pdftex.def Info: iitk_logo.jpg  used on input line 89.
+Package pdftex.def Info: iitk_logo.jpg  used on input line 92.
 (pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
  [4
 
 ]
 File: iitk_logo.jpg Graphic file (type jpg)
 <use iitk_logo.jpg>
-Package pdftex.def Info: iitk_logo.jpg  used on input line 96.
+Package pdftex.def Info: iitk_logo.jpg  used on input line 109.
 (pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
  [5
 
-] (/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.bbl
+]
+File: iitk_logo.jpg Graphic file (type jpg)
+<use iitk_logo.jpg>
+Package pdftex.def Info: iitk_logo.jpg  used on input line 121.
+(pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
+ [6
+
+]
+File: iitk_logo.jpg Graphic file (type jpg)
+<use iitk_logo.jpg>
+Package pdftex.def Info: iitk_logo.jpg  used on input line 135.
+(pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
+ [7
+
+]
+File: iitk_logo.jpg Graphic file (type jpg)
+<use iitk_logo.jpg>
+Package pdftex.def Info: iitk_logo.jpg  used on input line 147.
+(pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
+ [8
+
+]
+File: iitk_logo.jpg Graphic file (type jpg)
+<use iitk_logo.jpg>
+Package pdftex.def Info: iitk_logo.jpg  used on input line 158.
+(pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
+ [9
+
+]
+<acf_ar.jpg, id=400, 481.8pt x 481.8pt>
+File: acf_ar.jpg Graphic file (type jpg)
+<use acf_ar.jpg>
+Package pdftex.def Info: acf_ar.jpg  used on input line 174.
+(pdftex.def)             Requested size: 142.26378pt x 142.26208pt.
+<acf_ar_chatterjee.jpg, id=401, 481.8pt x 481.8pt>
+File: acf_ar_chatterjee.jpg Graphic file (type jpg)
+<use acf_ar_chatterjee.jpg>
+Package pdftex.def Info: acf_ar_chatterjee.jpg  used on input line 174.
+(pdftex.def)             Requested size: 142.26378pt x 142.26208pt.
+File: iitk_logo.jpg Graphic file (type jpg)
+<use iitk_logo.jpg>
+Package pdftex.def Info: iitk_logo.jpg  used on input line 174.
+(pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
+ [10
+
+ </Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/acf_ar.jpg> </Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/acf_ar_chatterjee.jpg>]
+<acf_mh.jpg, id=429, 481.8pt x 481.8pt>
+File: acf_mh.jpg Graphic file (type jpg)
+<use acf_mh.jpg>
+Package pdftex.def Info: acf_mh.jpg  used on input line 185.
+(pdftex.def)             Requested size: 142.26378pt x 142.26208pt.
+<acf_mh_chatterjee.jpg, id=430, 481.8pt x 481.8pt>
+File: acf_mh_chatterjee.jpg Graphic file (type jpg)
+<use acf_mh_chatterjee.jpg>
+Package pdftex.def Info: acf_mh_chatterjee.jpg  used on input line 185.
+(pdftex.def)             Requested size: 142.26378pt x 142.26208pt.
+File: iitk_logo.jpg Graphic file (type jpg)
+<use iitk_logo.jpg>
+Package pdftex.def Info: iitk_logo.jpg  used on input line 185.
+(pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
+ [11
+
+ </Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/acf_mh.jpg> </Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/acf_mh_chatterjee.jpg>] (/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 )
 File: iitk_logo.jpg Graphic file (type jpg)
 <use iitk_logo.jpg>
-Package pdftex.def Info: iitk_logo.jpg  used on input line 110.
+Package pdftex.def Info: iitk_logo.jpg  used on input line 190.
 (pdftex.def)             Requested size: 29.8793pt x 28.45274pt.
- [6
+ [12
 
 ]
 \tf@nav=\write7
@@ -984,18 +1046,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 4E9288A3C78A7CE9D96F4AF24B62EC12;1167.
  ) 
 Here is how much of TeX's memory you used:
- 26161 strings out of 478994
- 505147 string characters out of 5858184
- 803824 words of memory out of 5000000
- 43069 multiletter control sequences out of 15000+600000
- 414268 words of font info for 66 fonts, out of 8000000 for 9000
+ 26291 strings out of 478994
+ 508598 string characters out of 5858184
+ 804826 words of memory out of 5000000
+ 43180 multiletter control sequences out of 15000+600000
+ 416581 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 131i,15n,132p,515b,675s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.pdf (6 pages, 190213 bytes).
+ 131i,15n,132p,515b,673s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.pdf (12 pages, 330143 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
- 19 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 531 PDF objects out of 1000 (max. 8388607)
+ 437 compressed objects within 5 object streams
+ 31 named destinations out of 1000 (max. 500000)
+ 422 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -64,45 +64,125 @@
 \section{Markov chain Monte Carlo}
 \begin{frame}
     \frametitle{Markov Chain Monte Carlo}
-    \begin{itemize}
-        \item A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ such that the next state of the process depends solely on the present state, i.e.
+    \begin{definition}
+        A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ such that the next state of the process depends solely on the present state, i.e.
             $$\Pr(X_n | X_1, \dots, X_{n-1}) = \Pr(X_n | X_{n-1}).$$
-            \vspace{2em}
+    \end{definition}
+    \vspace{2em}
+    \begin{itemize}
         \item A Markov chain can be specified by two things
             \begin{enumerate}
                 \item The initial distribution, i.e. the marginal of $X_1$.
-                \item The transition probabilites, i.e. the conditional of $X_{n+1}|X_n$
+                \item The transition probabilites, i.e. the conditional distribution of $X_{n+1}|X_n$
             \end{enumerate}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Markov chain Monte Carlo}
-    \begin{itemize}
-        \item A Markov chain is said to be \textbf{stationary} if the marginal of $X_n$ is independent of $n$. This invariant distribution is called the stationary distribution.
-        \vspace{2em}
-        \item A Markov chain is \textbf{ergodic} if the distribution of $X_n$ converges to the invariant distribution.
-        \vspace{2em}
-        \item A stationary Markov chain is \textbf{time-reversible} w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable.
-    \end{itemize}
-
+    \begin{definition}
+        A Markov chain is said to be \textbf{stationary} if the marginal of $X_n$ is independent of $n$. This invariant distribution is called the stationary distribution.
+    \end{definition}
+    \begin{definition}
+        A Markov chain is \textbf{ergodic} if the distribution of $X_n$ converges to the invariant distribution.
+    \end{definition}
+    \begin{definition}
+        A stationary Markov chain is \textbf{time-reversible} w.r.t. the stationary distribution if $X_n$ and $X_{n+1}$ are exchangable.
+    \end{definition}
 \end{frame}
 
 \section{Pearson's Correlation Coefficient}
 \begin{frame}
     \frametitle{Pearson's Correlation Coefficient}
-
-
+    \begin{itemize}
+        \item Pearson's Correlation Coefficient measures the linear correlation between two sets of data.
+    \end{itemize}
+    \vspace{2em}
+    \begin{definition}
+        Given random variables $X, Y$, Pearson Correlation $\rho$ is defined as
+        $$\rho = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X)} \cdot \sqrt{\text{Var}(Y)}}.$$
+    \end{definition}
+    \vspace{2em}
+    \begin{itemize}
+        \item Pearson Correlation is very powerful in detecting monotone relations and has a well developed asymptotic theory.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Problems with Pearson Correlation}
+    \begin{itemize}
+        \item There are some problems with the Pearson Correlation.
+        \vspace{2em}
+        \item We would like the correlation to be close to its maximum value iff one variable is a function of the other.
+        In Pearson's case, it is equal to $\pm 1$ iff the variables are linearly dependent.
+        \vspace{2em}
+        \item We would also like the correlation to be 0 iff the variables are independent.
+        If the variables are independent, Pearson correlation is indeed 0, but the converse is not always true.
+    \end{itemize}
 \end{frame}
 
 \section{Chatterjee's Correlation Coefficient}
+\begin{frame}
+    \frametitle{Chatterjee's Correlation Coefficient}
+    \begin{itemize}
+        \item In order to solve these problems, Chatterjee came up with a new measure of dependence in \cite{}.
+        It overcomes the above mentioned drawbacks, and has a computationally efficient consistent estimator.
+    \end{itemize}
+    \vspace{2em}
+    \begin{definition}
+        Given random variables $X, Y$, where is $Y$ is not a constant, Chatterjee correlation $\xi$ is defined as
+        $$\xi(X, Y) = \frac{\int Var(\mathbb{E}(1_{\{Y \geq t\}}|X)) d\mu(t)}{\int Var(1_{\{Y \geq t\}}) d\mu(t)}$$
+    \end{definition}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Consistent Estimator of $\xi$}
+    \begin{itemize}
+        \item Let $\{(X_i, Y_i)\}_{i = 1}^n$ be i.i.d. pairs following the same distribution as $(X, Y)$.
+        Rearrange the data as $(X_{(1)}, Y_{(1)}), \dots, (X_{(n)}, Y_{(n)})$ such that $X_{(1)} < \dots < X_{(n)}$. Let $r_i$ be the rank of $Y_{(i)}$, i.e. the number of $j$ such that $Y_{(j)} \leq Y_{(i)}$.  Then the correlation coefficient $\xi_n$ is defined to be
+		$$\xi_n(X, Y) := 1-\frac{3\sum_{i=1}^{n-1} |r_{i+1} - r_i|}{n^2-1}.$$
+    \end{itemize}
+    \begin{theorem}
+        If $Y$ is not almost surely a constant, then as $n \rightarrow \infty$, $\xi_n(X, Y)$ converges almost surely to $\xi(X, Y)$.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Properties of $\xi$}
+    \begin{itemize}
+        \item $\xi(X, Y) \in [0, 1]$
+		\item $\xi(X, Y) = 0$ if and only if $X$ and $Y$ are independent.
+		\item $\xi(X, Y) = 1$ if and only if atleast one of $X$ and $Y$ is a measurable function of the other.
+		\item $\xi$ is not symmetric in $X, Y$. This is intentional and useful as we might want to study if $Y$ is a measurable function of $X$, or $X$ is a measurable function of $Y$. To get a symmetric coefficient, it suffices to consider $\max(\xi(X, Y), \xi(Y, X))$.
+		\item $\xi_n$ is based on ranks, and for the same reason, it can be computed in $O(n\log n)$.
+    \end{itemize}
+\end{frame}
 
 \section{Chatterjee's Autocorrelation Coefficient}
 
 \section{Sketch of proof of consistency}
 
 \section{Simulations}
+\begin{frame}
+    \frametitle{Simulations}
+    \begin{itemize}
+        \item AR(1) process with $\rho = 0.8$.
+    \end{itemize}
+    \vspace{2em}
+    \centering
+        \includegraphics[width=5cm]{acf_ar.jpg}
+        \includegraphics[width=5cm]{acf_ar_chatterjee.jpg}
+\end{frame}
 
+\begin{frame}
+    \frametitle{Simulations}
+    \begin{itemize}
+        \item Metropolis-Hastings algorithm with initial distribution as Exp(0.01) and target distribution $\mathcal{N}(0, 1)$.
+    \end{itemize}
+    \vspace{2em}
+    \centering
+        \includegraphics[width=5cm]{acf_mh.jpg}
+        \includegraphics[width=5cm]{acf_mh_chatterjee.jpg}
+\end{frame}
 
 \begin{frame} [allowframebreaks]\frametitle{References}
         \bibliographystyle{apalike}
