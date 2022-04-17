@@ -66,7 +66,7 @@
     \frametitle{Markov Chain Monte Carlo}
     \begin{definition}
         A Markov chain is a discrete time stochastic process $X_1, X_2, \dots$ such that the next state of the process depends solely on the present state, i.e.
-            $$\Pr(X_n | X_1, \dots, X_{n-1}) = \Pr(X_n | X_{n-1}).$$
+            $$\Pr(X_{n+1} | X_1, \dots, X_{n}) = \Pr(X_{n+1} | X_{n}).$$
     \end{definition}
     \vspace{2em}
     \begin{itemize}
@@ -125,12 +125,13 @@
     \frametitle{Chatterjee's Correlation Coefficient}
     \begin{itemize}
         \item In order to solve these problems, Chatterjee came up with a new measure of dependence in \cite{chatterjee2020sourav}.
-        It overcomes the above mentioned drawbacks, and has a computationally efficient consistent estimator.
+        It overcomes the above mentioned drawbacks, and has a computationally efficient and consistent estimator.
     \end{itemize}
     \vspace{2em}
     \begin{definition}
         Given random variables $X, Y$, where is $Y$ is not a constant, Chatterjee correlation $\xi$ is defined as
-        $$\xi(X, Y) = \frac{\int Var(\mathbb{E}(1_{\{Y \geq t\}}|X)) d\mu(t)}{\int Var(1_{\{Y \geq t\}}) d\mu(t)}$$
+        $$\xi(X, Y) = \frac{\int Var(\mathbb{E}(1_{\{Y \geq t\}}|X)) d\mu(t)}{\int Var(1_{\{Y \geq t\}}) d\mu(t)},$$
+        where $\mu$ is the law of $Y$.
     \end{definition}
 \end{frame}
 

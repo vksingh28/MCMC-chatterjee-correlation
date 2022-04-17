@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1650158280 "main.aux" "main.bbl" "main" 1650158333
+["bibtex main"] 1650158280 "main.aux" "main.bbl" "main" 1650158686
   "/usr/local/texlive/2021/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
   "bibfile.bib" 1650158140 1446 c91984009cc9414a1449df8abdc1599d ""
-  "main.aux" 1650158282 5441 e775e4c24dcb35981010420b4eeafc1d "pdflatex"
+  "main.aux" 1650158685 5441 e775e4c24dcb35981010420b4eeafc1d "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1650158280 "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.tex" "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.pdf" "main" 1650158333
-  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.aux" 1650158282 5441 e775e4c24dcb35981010420b4eeafc1d ""
-  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.tex" 1650158331 9557 6b27567973e8772443dc5f8c17e6b6b7 ""
+["pdflatex"] 1650158683 "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.tex" "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.pdf" "main" 1650158686
+  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.aux" 1650158685 5441 e775e4c24dcb35981010420b4eeafc1d ""
+  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.tex" 1650158682 9605 049c196bd534c1eb7524892f0dea4849 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -250,19 +250,19 @@
   "acf_mh.jpg" 1650155731 21472 f1f20df9491acc24195fcefca7593a3d ""
   "acf_mh_chatterjee.jpg" 1650155731 20264 4e7a3d804041d9d8c9b4ebfb8c97265c ""
   "iitk_logo.jpg" 1650104516 92542 fea2a87407a2c39dff7c29bde07099c8 ""
-  "main.aux" 1650158282 5441 e775e4c24dcb35981010420b4eeafc1d "pdflatex"
+  "main.aux" 1650158685 5441 e775e4c24dcb35981010420b4eeafc1d "pdflatex"
   "main.bbl" 1650158280 166 1ddaf4ba3315ecd73ee1551acb67c139 "bibtex main"
-  "main.nav" 1650158282 2997 ba8116ac9e36354adb22b9bb2ea5b5d3 "pdflatex"
-  "main.out" 1650158282 1167 e4958d9c992a6ac9dc2417f1135c7ed4 "pdflatex"
-  "main.tex" 1650158331 9557 6b27567973e8772443dc5f8c17e6b6b7 ""
-  "main.toc" 1650158282 393 c14c1072aee32f8a8f9a3ac62d018edb "pdflatex"
+  "main.nav" 1650158685 2997 ba8116ac9e36354adb22b9bb2ea5b5d3 "pdflatex"
+  "main.out" 1650158685 1167 e4958d9c992a6ac9dc2417f1135c7ed4 "pdflatex"
+  "main.tex" 1650158682 9605 049c196bd534c1eb7524892f0dea4849 ""
+  "main.toc" 1650158685 393 c14c1072aee32f8a8f9a3ac62d018edb "pdflatex"
   (generated)
+  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.log"
   "main.out"
-  "main.nav"
-  "main.log"
   "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.pdf"
-  "main.snm"
   "main.pdf"
   "main.toc"
-  "/Users/vivekkumarsingh/Desktop/UGP-1/MCMC-chatterjee-correlation/UGP_190988_PPT/main.log"
+  "main.snm"
   "main.aux"
+  "main.log"
+  "main.nav"
