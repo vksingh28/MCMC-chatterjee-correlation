@@ -9,7 +9,7 @@ ar.x = numeric(reps)
 sd = 100
 eps = rnorm(reps, mean = 0, sd = sd)
 ar.x[1] = rnorm(1)
-rho = 0.9
+rho = 0.3
 for(t in 2:reps){
 	ar.x[t] = rho*ar.x[t-1] + eps[t]
 }
@@ -37,6 +37,7 @@ first_negative_acf = min(which(acf(ar.x)$acf < 0))-1
 acf_values = as.vector(acf(ar.x)$acf)
 var_pearson_positive = -acf_values[1] + 2*sum(acf_values[1:first_negative_acf])
 var_chatterjee_positive = -acf_values[1] + 2*sum(acf_values[1:first_negative_chatterjee])
+cat(first_negative_acf, first_negative_chatterjee, "\n")
 cat(var_pearson_positive, var_chatterjee_positive, "\n")
 
 # Initial Monotone Sequence Estimate
@@ -55,4 +56,5 @@ for (i in 2:length(acf_values)) {
 
 var_pearson_monotone = -acf_values[1] + 2*sum(acf_values[1:first_monotone_acf])
 var_chatterjee_monotone = -acf_values[1] + 2*sum(acf_values[1:first_monotone_chatterjee])
+cat(first_monotone_acf, first_monotone_chatterjee, "\n")
 cat(var_pearson_monotone, var_chatterjee_monotone, "\n")
