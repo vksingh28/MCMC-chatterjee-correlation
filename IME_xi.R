@@ -9,7 +9,7 @@ ar.x = numeric(reps)
 sd = 100
 eps = rnorm(reps, mean = 0, sd = sd)
 ar.x[1] = rnorm(1)
-rho = 0.3
+rho = 0.9
 for(t in 2:reps){
 	ar.x[t] = rho*ar.x[t-1] + eps[t]
 }
