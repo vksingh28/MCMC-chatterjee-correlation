@@ -1,14 +1,13 @@
 library(XICOR)
 library(httpgd)
 
+reps = 500
 
-variance_estimates = function(rho){
-  reps = 500
-
+variance_estimates = function(rho, eps){
   # AR(1) process
   ar.x = numeric(reps)
-  sd = 5
-  eps = rnorm(reps, mean = 0, sd = sd)
+  sd = 1
+  # eps = rnorm(reps, mean = 0, sd = sd)
   ar.x[1] = rnorm(1)
   for(t in 2:reps){
     ar.x[t] = rho*ar.x[t-1] + eps[t]
@@ -38,29 +37,8 @@ variance_estimates = function(rho){
   var_pearson_positive = -acf_values[1] + 2*sum(acf_values[1:min(first_negative_acf, N)])
   var_chatterjee_positive = -acf_values[1] + 2*sum(acf_values[1:min(first_negative_chatterjee, N)])
   return(list(var_pearson = var_pearson_positive, var_chatterjee = var_chatterjee_positive, first_negative_acf = first_negative_acf, first_negative_chatterjee = first_negative_chatterjee))
-  # cat(first_negative_acf, first_negative_chatterjee, "\n")
-  # cat(var_pearson_positive, var_chatterjee_positive, "\n")
-
-  # # Initial Monotone Sequence Estimate
-  # for (i in 2:length(acf_chatterjee)) {
-  #   if (acf_chatterjee[i] >= acf_chatterjee[i - 1]) {
-  #     break  # Exit the loop when it stops decreasing
-  #   }
-  #   first_monotone_chatterjee <- i
-  # }
-  # for (i in 2:length(acf_values)) {
-  #   if (acf_values[i] >= acf_values[i - 1]) {
-  #     break  # Exit the loop when it stops decreasing
-  #   }
-  #   first_monotone_acf <- i
-  # }
-
-  # var_pearson_monotone = -acf_values[1] + 2*sum(acf_values[1:first_monotone_acf])
-  # var_chatterjee_monotone = -acf_values[1] + 2*sum(acf_values[1:first_monotone_chatterjee])
-  # cat(first_monotone_acf, first_monotone_chatterjee, "\n")
-  # cat(var_pearson_monotone, var_chatterjee_monotone, "\n")
 }
-rho_values = seq(0.9, 0.99, length.out = 10)
+rho_values = seq(0.9, 0.99, length.out = 3)
 
 # chatterjee_variances = data.frame(matrix(0, ncol = 10, nrow = 500))
 # names(chatterjee_variances) = rho_values
@@ -71,13 +49,16 @@ rho_values = seq(0.9, 0.99, length.out = 10)
 # acf_first_index = data.frame(matrix(0, ncol = 10, nrow = 500))
 # names(acf_first_index) = rho_values
 
-variances = data.frame(matrix(0, ncol = 20, nrow = 500))
-first_index = data.frame(matrix(0, ncol = 20, nrow = 500))
+variances = data.frame(matrix(0, ncol = 2*length(rho_values), nrow = 1e4))
+first_index = data.frame(matrix(0, ncol = 2*length(rho_values), nrow = 1e4))
 
+eps = matrix(rnorm(reps*length(rho_values)), nrow = reps, ncol = length(rho_values))
+
+start = Sys.time()
 for(j in 1:length(rho_values)){
-  for(i in 1:250){
+  for(i in 1:1e4){
     rho = rho_values[j]
-    variance_values = variance_estimates(rho)
+    variance_values = variance_estimates(rho, eps[, j])
     variances[i, 2*j-1] = variance_values$var_chatterjee
     variances[i, 2*j] = variance_values$var_pearson
     first_index[i, 2*j-1] = variance_values$first_negative_chatterjee
@@ -86,15 +67,19 @@ for(j in 1:length(rho_values)){
     # pearson_variances[i, j] = variance_values$var_pearson
     # chatterjee_first_index[i, j] = variance_values$first_negative_chatterjee
     # acf_first_index[i, j] = variance_values$first_negative_chatterjee
-
   }
 }
+print(Sys.time()-start)
 boxplot_title = c()
 for(rho in rho_values){
   boxplot_title = c(boxplot_title, paste(as.character(rho), "xi"), "acf")
 }
 names(variances) = boxplot_title
 jpeg("acf_vs_chatterjee_boxplot.jpeg")
-boxplot(variances[1:250, ], boxwidth = 10)
+boxplot(variances[1:1e4, ], boxwidth = 10)
 dev.off()
-boxplot(first_index[1:250, ])
+boxplot(first_index[1:500, ])
+colMeans(variances)
+sd = 1
+actual_means = (1+rho_values)/(1-rho_values)
+actual_means
